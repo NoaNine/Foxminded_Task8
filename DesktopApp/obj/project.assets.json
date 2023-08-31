@@ -364,6 +364,20 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "University.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.10"
+        },
+        "compile": {
+          "bin/placeholder/University.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/University.DAL.dll": {}
+        }
       }
     }
   },
@@ -940,12 +954,18 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "University.DAL/1.0.0": {
+      "type": "project",
+      "path": "../University.DAL/University.DAL.csproj",
+      "msbuildProject": "../University.DAL/University.DAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "Microsoft.EntityFrameworkCore.Relational >= 7.0.10",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.10"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.10",
+      "University.DAL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -980,7 +1000,11 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\IT_Academy\\Foxminded\\Task8\\University.DAL\\University.DAL.csproj": {
+              "projectPath": "E:\\IT_Academy\\Foxminded\\Task8\\University.DAL\\University.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
