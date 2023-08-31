@@ -1,0 +1,14 @@
+E:\IT_Academy\Foxminded\Task8\University.DAL\bin\Debug\net7.0\University.DAL.deps.json
+E:\IT_Academy\Foxminded\Task8\University.DAL\bin\Debug\net7.0\University.DAL.dll
+E:\IT_Academy\Foxminded\Task8\University.DAL\bin\Debug\net7.0\University.DAL.pdb
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.csproj.AssemblyReference.cache
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.AssemblyInfoInputs.cache
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.AssemblyInfo.cs
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.csproj.CoreCompileInputs.cache
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.dll
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\refint\University.DAL.dll
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.pdb
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\ref\University.DAL.dll
+E:\IT_Academy\Foxminded\Task8\University.DAL\bin\Debug\net7.0\University.DAL.runtimeconfig.json
+E:\IT_Academy\Foxminded\Task8\University.DAL\obj\Debug\net7.0\University.DAL.genruntimeconfig.cache
