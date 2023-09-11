@@ -1,16 +1,16 @@
 #Task8
 
-Проект створено Гавлицьким Олександром в навчальних цілях на курсі FoxmindEd.
+РџСЂРѕРµРєС‚ СЃС‚РІРѕСЂРµРЅРѕ Р“Р°РІР»РёС†СЊРєРёРј РћР»РµРєСЃР°РЅРґСЂРѕРј РІ РЅР°РІС‡Р°Р»СЊРЅРёС… С†С–Р»СЏС… РЅР° РєСѓСЂСЃС– FoxmindEd.
 
-Опис задачі:
+РћРїРёСЃ Р·Р°РґР°С‡С–:
 Create a WPF (WinForms) application for working with data from task 6 (and extend it for a new entity - Teacher).
 
-1. On the default page – show a list of courses. When the course is selected - show a list of groups for the selected course. 
+1. On the default page Р¦ show a list of courses. When the course is selected - show a list of groups for the selected course. 
 When the group is selected - show a list of students for the selected group. (You can replace course and group lists with a treeview)
 
 2. A separate page for create/delete groups and edit group (change group name, select/update teacher of group). 
 
-		a) It’s also necessary to add functionality (buttons) for export/import a list of students of a group to a csv file (separator is “,”). 
+		a) ItРўs also necessary to add functionality (buttons) for export/import a list of students of a group to a csv file (separator is РЈ,Р¤). 
 		Before importing students into a group, you have to clear the group where you are uploading new students.
 		A group can not be deleted if there is at least one student in this group.
 
