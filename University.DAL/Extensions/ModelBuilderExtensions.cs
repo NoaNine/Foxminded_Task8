@@ -81,5 +81,17 @@ public static class ModelBuilderExtensions
             new Student { Id = 55, GroupId = 141, FirstName = "Стелла", LastName = "Рибенчук" },
             new Student { Id = 56, GroupId = 141, FirstName = "Мокрина", LastName = "Трегуб" }
             );
+
+        modelBuilder.Entity<Teacher>().HasData(
+            new Teacher { Id = 1, GroupId = 111, FirstName = "Олександр", LastName = "Полухін" },
+            new Teacher { Id = 2, GroupId = 111, FirstName = "Василій", LastName = "Моржов" },
+            new Teacher { Id = 3, GroupId = 112, FirstName = "Іван", LastName = "Куклінський" },
+            new Teacher { Id = 4, GroupId = 112, FirstName = "Світлана", LastName = "Савченко" },
+            new Teacher { Id = 5, GroupId = 113, FirstName = "Раїса", LastName = "Халявкіна" },
+            new Teacher { Id = 6, GroupId = 121, FirstName = "Генадій", LastName = "Василенко" },
+            new Teacher { Id = 7, GroupId = 131, FirstName = "Петро", LastName = "Моденов" },
+            new Teacher { Id = 8, GroupId = 141, FirstName = "Ірина", LastName = "Чуба" },
+            new Teacher { Id = 9, GroupId = 141, FirstName = "Анна", LastName = "Колісник" }
+            );
     }
 }

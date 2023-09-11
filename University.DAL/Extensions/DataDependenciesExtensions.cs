@@ -11,6 +11,7 @@ namespace University.DAL.Extensions
             services.AddScoped<IRepository<Course>, Repository<Course>>();
             services.AddScoped<IRepository<Group>, Repository<Group>>();
             services.AddScoped<IRepository<Student>, Repository<Student>>();
+            services.AddScoped<IRepository<Teacher>, Repository<Teacher>>();
             return services;
         }
     }

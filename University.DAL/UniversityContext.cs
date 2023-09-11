@@ -37,6 +37,13 @@ public class UniversityContext : DbContext
                 .IsUnique();
         });
 
+        modelBuilder.Entity<Teacher>(g =>
+        {
+            g.ToTable("Teachers")
+                .HasMany(t => t.Groups)
+                .WithMany(g => g.Teachers);
+        });
+
         modelBuilder.Entity<Student>(s =>
         {
             s.ToTable("Students");
