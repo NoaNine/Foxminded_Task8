@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Windows;
+using University.Dal.UnitOfWork;
 using University.DAL;
 using University.DAL.Models;
 using University.DAL.Repositories;
@@ -14,9 +15,10 @@ namespace DesktopApp
         private readonly IRepository<Teacher> _teacherRepository;
         private readonly IRepository<Group> _groupRepository;
         private readonly UniversityContext _universityContext;
+        private readonly IUnitOfWork _unitOfWork;
 
         public MainWindow(IRepository<Course> courseRepository, IRepository<Student> studentRepository, 
-            IRepository<Teacher> teacherRepository, IRepository<Group> groupRepository, UniversityContext universityContext)
+            IRepository<Teacher> teacherRepository, IRepository<Group> groupRepository, UniversityContext universityContext, IUnitOfWork unitOfWork)
         {
             InitializeComponent();
 
@@ -25,7 +27,7 @@ namespace DesktopApp
             _teacherRepository = teacherRepository;
             _groupRepository = groupRepository;
             _universityContext = universityContext;
-
+            _unitOfWork = unitOfWork;
 
             //var listCourses = _courseRepository.GetAll();
 
@@ -36,7 +38,8 @@ namespace DesktopApp
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = _courseRepository.GetAll();
+            _universityContext.Groups.Load();
+            DataContext = _universityContext.Groups.Local.ToObservableCollection();
         }
     }
 }

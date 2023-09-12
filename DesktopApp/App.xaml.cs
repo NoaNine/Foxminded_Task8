@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using University.Dal.UnitOfWork;
 using University.DAL;
 using University.DAL.Extensions;
 using University.DAL.Models;
 using University.DAL.Repositories;
+using University.DAL.UnitOfWork;
 
 namespace DesktopApp
 {
@@ -24,6 +26,7 @@ namespace DesktopApp
             IConfiguration configuration = context.Configuration;
             services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
             services.AddDataDependencies();
+            services.AddSingleton<IUnitOfWork>();
             services.AddSingleton<MainWindow>();
         })
         .Build();
