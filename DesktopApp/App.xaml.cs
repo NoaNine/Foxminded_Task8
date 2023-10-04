@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using DesktopApp.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,6 @@ namespace DesktopApp
             IConfiguration configuration = context.Configuration;
             services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
             services.AddDataDependencies();
-            services.AddSingleton<IUnitOfWork>();
             services.AddSingleton<MainWindow>();
         })
         .Build();
