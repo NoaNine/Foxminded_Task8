@@ -2,8 +2,8 @@
 
 namespace University.DAL.Models;
 
-public abstract class BaseModel
+public class BaseModel
 {
-    [Key]
+    //[Key]   ????
     public int Id { get; set; }
 }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace DesktopApp.ViewModel
-{
+namespace DesktopApp.ViewModel;
 
-    public class ViewModelLocator
-    {
-        public MainWindowViewModel MainViewModel => App.ServiceProvider.GetRequiredService<MainWindowViewModel>();
-    }
+public class ViewModelLocator
+{
+    public MainWindowViewModel MainViewModel => App.ServiceProvider.GetRequiredService<MainWindowViewModel>();
 }

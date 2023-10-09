@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using University.DAL.Extensions;
 using University.DAL.Models;
+using University.DAL.Configurations;
 
 namespace University.DAL;
 
@@ -18,38 +19,11 @@ public class UniversityContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Course>(c =>
-        {
-            c.ToTable("Courses")
-                .HasMany(c => c.Groups)
-                .WithOne(g => g.Course)
-                .OnDelete(DeleteBehavior.Cascade);
-            c.HasIndex(c => c.Name)
-                .IsUnique();
-        });
+        modelBuilder.ApplyConfiguration(new CoursesConfiguration());
+        modelBuilder.ApplyConfiguration(new StudentConfiguration());
+        modelBuilder.ApplyConfiguration(new TeacherConfiguration());
+        modelBuilder.ApplyConfiguration(new GroupConfiguration());
 
-        modelBuilder.Entity<Group>(g =>
-        {
-            g.ToTable("Groups")
-                .HasMany(g => g.Students)
-                .WithOne(s => s.Group)
-                .OnDelete(DeleteBehavior.Cascade);
-            g.HasIndex(g => g.Name)
-                .IsUnique();
-        });
-
-        modelBuilder.Entity<Teacher>(g =>
-        {
-            g.ToTable("Teachers")
-                .HasMany(t => t.Groups)
-                .WithMany(g => g.Teachers);
-        });
-
-        modelBuilder.Entity<Student>(s =>
-        {
-            s.ToTable("Students");
-        });
-
-        modelBuilder.Seed();
+        modelBuilder.Seed(); //delete
     }
 }

@@ -4,11 +4,10 @@ using University.DAL.Repositories;
 
 namespace University.DAL.UnitOfWork;
 
-public class UnitOfWork : IDisposable, IUnitOfWork
+public class UnitOfWork : IUnitOfWork, IDisposable
 {
     private readonly UniversityContext _context;
     private bool _disposed = false;
-    private Dictionary<Type, object> _repositories;
 
     public UnitOfWork(UniversityContext context)
     {
@@ -17,18 +16,11 @@ public class UnitOfWork : IDisposable, IUnitOfWork
 
     public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
     {
-        _repositories = new Dictionary<Type, object>();
-        var type = typeof(TEntity);
-        if (!_repositories.ContainsKey(type))
-        {
-            _repositories[type] = new Repository<TEntity>(_context);
-        }
-        return (IRepository<TEntity>)_repositories[type];
+        return new Repository<TEntity>(_context);
     }
 
     public void Save()
     {
-        _context.SaveChanges();
         try
         {
             _context.SaveChanges();
@@ -47,12 +39,9 @@ public class UnitOfWork : IDisposable, IUnitOfWork
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposed)
+        if (!_disposed && disposing)
         {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
+            _context.Dispose();
         }
         _disposed = true;
     }

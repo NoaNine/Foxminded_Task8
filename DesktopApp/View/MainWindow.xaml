@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopApp.View"
         mc:Ignorable="d"
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}">
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>

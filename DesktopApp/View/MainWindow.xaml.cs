@@ -1,13 +1,15 @@
 ﻿using DesktopApp.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Windows;
 
-namespace DesktopApp.View
+namespace DesktopApp.View;
+
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    public MainWindow(MainWindowViewModel viewModel)
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        DataContext = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
+        InitializeComponent();
     }
 }

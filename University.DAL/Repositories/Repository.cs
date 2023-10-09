@@ -10,8 +10,8 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public Repository(UniversityContext dbContext)
     {
-        _dbContext = dbContext;
-        _dbSet = _dbContext.Set<TEntity>();
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _dbSet = _dbContext.Set<TEntity>() ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
     public TEntity GetByID(object entity)
@@ -26,15 +26,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
             return _dbSet.ToList();
         }
         return _dbSet.Where(filter).ToList();
-    }
-
-    public IQueryable<TEntity> GetAllQuery(Expression<Func<TEntity, bool>> filter = null)
-    {
-        if (filter == null)
-        {
-            return _dbSet.AsNoTracking();
-        }
-        return _dbSet.Where(filter).AsNoTracking();
     }
 
     public void Insert(TEntity entity)
