@@ -13,21 +13,6 @@ namespace DesktopApp;
 
 public partial class App : Application
 {
-    //IHost host = Host.CreateDefaultBuilder()
-    //.ConfigureAppConfiguration(app =>
-    //{
-    //    app.SetBasePath(Directory.GetCurrentDirectory());
-    //    app.AddJsonFile("appsettings.json");
-    //})
-    //.ConfigureServices((context, services) =>
-    //{
-    //    IConfiguration configuration = context.Configuration;
-    //    services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
-    //    services.AddDataDependencies();
-    //    services.AddSingleton<MainWindow>();
-    //})
-    //.Build();
-
     private readonly IHost host;
     public static IServiceProvider ServiceProvider { get; private set; }
 

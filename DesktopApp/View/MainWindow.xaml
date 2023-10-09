@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
+        
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -27,7 +28,7 @@
         <Button Content="Add Tutor" Grid.Column="3" Grid.Row="2"></Button>
         <Button Content="Import Student" Grid.Column="4" Grid.Row="2"></Button>
         <Button Content="Export Student" Grid.Column="5" Grid.Row="2"></Button>
-        <TreeView x:Name="treeWiewCourses" Background="Blue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <TreeView Background="Blue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <TreeView.Resources>
                 <HierarchicalDataTemplate ItemsSource = "{Binding Path = Courses}">
                     <StackPanel Orientation="Horizontal">
