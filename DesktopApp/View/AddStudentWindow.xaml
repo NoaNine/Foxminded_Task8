@@ -11,7 +11,11 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+        <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="200">
             <TextBlock Text="First name"></TextBlock>
             <TextBox Text=""></TextBox>
             <TextBlock Text="Last name"></TextBlock>

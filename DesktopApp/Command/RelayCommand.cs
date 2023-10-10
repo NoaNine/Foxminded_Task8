@@ -16,7 +16,7 @@ public class RelayCommand : ICommand
 
     public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
     {
-        this.execute = execute;
+        this.execute = execute ?? throw new ArgumentNullException("execute");
         this.canExecute = canExecute;
     }
 

@@ -5,6 +5,7 @@ using University.DAL.Models;
 using DesktopApp.View;
 using System.Windows;
 using DesktopApp.Command;
+using University.Dal.UnitOfWork;
 
 namespace DesktopApp.ViewModel;
 
@@ -66,7 +67,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
     #endregion
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(IUnitOfWork unitOfWork)
     {
 
     }

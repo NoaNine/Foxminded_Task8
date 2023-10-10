@@ -1,13 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using DesktopApp.Command;
 using DesktopApp.View;
 using DesktopApp.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using University.Dal.UnitOfWork;
 using University.DAL;
+using University.DAL.UnitOfWork;
 
 namespace DesktopApp;
 
@@ -37,26 +40,28 @@ public partial class App : Application
         IServiceCollection services)
     {
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddSingleton<MainWindowViewModel>();
 
         services.AddTransient<MainWindow>();
     }
 
-    //protected override async void OnStartup(StartupEventArgs e)
-    //{
-    //    base.OnStartup(e);
+    protected override async void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
 
-    //    await host.StartAsync();
-    //    var window = ServiceProvider.GetRequiredService<MainWindow>();
-    //    window.Show();
-    //}
-    //protected override async void OnExit(ExitEventArgs e)
-    //{
-    //    using (host)
-    //    {
-    //        await host.StopAsync(TimeSpan.FromSeconds(5));
-    //    }
-    //    base.OnExit(e);
-    //}
+        await host.StartAsync();
+        var window = ServiceProvider.GetRequiredService<MainWindow>();
+        window.Show();
+    }
+
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        using (host)
+        {
+            await host.StopAsync(TimeSpan.FromSeconds(5));
+        }
+        base.OnExit(e);
+    }
 }

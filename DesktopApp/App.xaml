@@ -2,16 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DesktopApp"
-             xmlns:vm="clr-namespace:DesktopApp.ViewModel" 
-             StartupUri="MainWindow.xaml">
-    
+             xmlns:vm="clr-namespace:DesktopApp.ViewModel">
+
     <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator
                 x:Key="Locator"/>
-            
+
             <Style TargetType="Window">
-                <Setter Property="FontSize" Value="28" />
+                <Setter Property="FontSize" Value="15" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

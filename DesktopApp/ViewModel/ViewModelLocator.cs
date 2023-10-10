@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DesktopApp.Command;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Input;
 
 namespace DesktopApp.ViewModel;
 
