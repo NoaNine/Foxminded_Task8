@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{CBE4BB0E-0E58-4DF8-BBA6-DFE2AA9108EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.WPF", "University.WPF\University.WPF.csproj", "{CBE4BB0E-0E58-4DF8-BBA6-DFE2AA9108EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.DAL", "University.DAL\University.DAL.csproj", "{BA8A35DE-A4BB-4FEF-995A-BE24D81C99CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.DAL", "University.DAL\University.DAL.csproj", "{BA8A35DE-A4BB-4FEF-995A-BE24D81C99CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

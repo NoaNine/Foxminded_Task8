@@ -69,7 +69,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     public MainWindowViewModel(IUnitOfWork unitOfWork)
     {
-
+        
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace University.DAL.Models;
+﻿namespace University.DAL.Models;
 
 public class BaseModel
 {
-    //[Key]   ????
     public int Id { get; set; }
 }

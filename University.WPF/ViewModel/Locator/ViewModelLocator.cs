@@ -1,8 +1,8 @@
-﻿using DesktopApp.Command;
+﻿using DesktopApp;
+using DesktopApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Input;
 
-namespace DesktopApp.ViewModel;
+namespace University.WPF.ViewModel.Locator;
 
 public class ViewModelLocator
 {
