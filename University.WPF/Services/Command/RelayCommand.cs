@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using System;
 
-namespace DesktopApp.Command;
+namespace University.WPF.Services.Command;
 
 public class RelayCommand : ICommand
 {
@@ -22,11 +22,11 @@ public class RelayCommand : ICommand
 
     public bool CanExecute(object parameter)
     {
-        return this.canExecute == null || this.canExecute(parameter);
+        return canExecute == null || canExecute(parameter);
     }
 
     public void Execute(object parameter)
     {
-        this.execute(parameter);
+        execute(parameter);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using DesktopApp.Command;
 using DesktopApp.View;
 using DesktopApp.ViewModel;
 using Microsoft.EntityFrameworkCore;

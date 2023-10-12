@@ -6,7 +6,7 @@
             xmlns:local="clr-namespace:DesktopApp.View"
             mc:Ignorable="d"
             Title="MainWindow" Height="450" Width="800"
-            DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}">
+            DataContext="{Binding Source={StaticResource Locator}, Path=MainVM}">
         
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -92,7 +92,8 @@
                   Grid.Column="2" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4" 
-                  ItemsSource="{Binding Groups.Students}">
+                  ItemsSource="{Binding Groups}">
         </ListView>
+        <ContentControl/>
     </Grid>
 </Window>

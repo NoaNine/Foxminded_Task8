@@ -1,15 +1,14 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using University.DAL.Models;
 using DesktopApp.View;
 using System.Windows;
-using DesktopApp.Command;
 using University.Dal.UnitOfWork;
+using University.WPF.Services.Command;
+using University.WPF.Core;
 
 namespace DesktopApp.ViewModel;
 
-public class MainWindowViewModel : INotifyPropertyChanged
+public class MainWindowViewModel : ViewModelBase
 {
     private ObservableCollection<Course> _courses;
     private ObservableCollection<Group> _groups;
@@ -18,7 +17,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public ObservableCollection<Course> Courses
     {
         get { return _courses; }
-        set
+        private set
         {
             _courses = value;
             OnPropertyChanged("Courses");
@@ -27,7 +26,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public ObservableCollection<Group> Groups
     {
         get { return _groups; }
-        set
+        private set
         {
             _groups = value;
             OnPropertyChanged("Groups");
@@ -36,7 +35,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public ObservableCollection<Student> Students
     {
         get { return _students; }
-        set
+        private set
         {
             _students = value;
             OnPropertyChanged("Students");
@@ -45,7 +44,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public ObservableCollection<Teacher> Teachers
     { 
         get { return _teachers; } 
-        set
+        private set
         {
             _teachers = value;
             OnPropertyChanged("Teachers");
@@ -70,14 +69,6 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public MainWindowViewModel(IUnitOfWork unitOfWork)
     {
         
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    private void OnPropertyChanged([CallerMemberName] string property = "")
-    {
-        if (PropertyChanged != null)
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
     }
 
     #region Method to open window
