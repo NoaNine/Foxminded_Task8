@@ -9,10 +9,13 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
     public void Configure(EntityTypeBuilder<Group> builder)
     {
         builder.ToTable("Groups")
-                .HasMany(g => g.Students)
-                .WithOne(s => s.Group)
-                .OnDelete(DeleteBehavior.Cascade);
+            .HasMany(g => g.Students)
+            .WithOne(s => s.Group)
+            .OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(g => g.Name)
-                .IsUnique();
+            .IsUnique();
+        builder.HasOne(g => g.Tutor) // or needed to create a new entity tutor and add relationships?
+            .WithOne(t => t.Group)
+            .HasForeignKey<Teacher>(t => t.GroupId);
     }
 }

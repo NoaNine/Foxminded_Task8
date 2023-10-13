@@ -1,10 +1,8 @@
 ﻿namespace University.DAL.Models;
 
-public class Teacher : BaseModel
+public class Teacher : HumanBaseModel
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
     public int GroupId { get; set; }
-
+    public Group Group { get; set; }
     public ICollection<Group> Groups { get; set; }
 }

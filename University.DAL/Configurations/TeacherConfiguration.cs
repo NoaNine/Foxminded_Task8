@@ -10,6 +10,6 @@ public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     {
         builder.ToTable("Teachers")
             .HasMany(t => t.Groups)
-            .WithMany(g => g.Teachers);
+            .WithOne(g => g.Teacher);
     }
 }
