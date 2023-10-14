@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using University.DAL.Models;
-using DesktopApp.View;
 using System.Windows;
 using University.Dal.UnitOfWork;
 using University.WPF.Services.Command;
@@ -74,8 +73,8 @@ public class MainWindowViewModel : ViewModelBase
     #region Method to open window
     private void OpenAddStudentWindowMethod()
     {
-        AddStudentWindow addStudentWindow = new AddStudentWindow();
-        SetCenterPositionAndOpen(addStudentWindow);
+        //AddStudentWindow addStudentWindow = new AddStudentWindow();
+        //SetCenterPositionAndOpen(addStudentWindow);
     }
 
     private void SetCenterPositionAndOpen(Window window)

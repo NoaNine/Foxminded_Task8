@@ -1,4 +1,4 @@
-﻿namespace University.DAL.Models;
+﻿namespace University.DAL.Models.Base;
 
 public class BaseModel
 {

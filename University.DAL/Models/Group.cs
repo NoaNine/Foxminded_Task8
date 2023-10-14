@@ -1,4 +1,6 @@
-﻿namespace University.DAL.Models;
+﻿using University.DAL.Models.Base;
+
+namespace University.DAL.Models;
 
 public class Group : BaseModel
 {
