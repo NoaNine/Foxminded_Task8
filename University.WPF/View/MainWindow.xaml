@@ -37,9 +37,8 @@
                 </DataTemplate>
             </TreeView.Resources>
         </TreeView>
-        <Grid Grid.Column="2" 
-              Grid.Row="1"
-              Grid.ColumnSpan="4">
+        <Grid Grid.Column="1" 
+              Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -57,7 +56,6 @@
             <ListView Grid.Row="1" 
                       Grid.ColumnSpan="2"
                       ItemsSource="{Binding}">
-
             </ListView>
         </Grid>
     </Grid>

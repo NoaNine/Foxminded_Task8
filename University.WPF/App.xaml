@@ -9,9 +9,10 @@
             <locator:ViewModelLocator
                 x:Key="Locator"/>
 
-            <Style TargetType="Window">
-                <Setter Property="FontSize" Value="15" />
-            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Common.xaml"/>
+                <ResourceDictionary Source="Styles/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
