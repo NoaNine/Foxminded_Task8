@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using University.Dal.UnitOfWork;
 using University.DAL.Repositories;
 
 namespace University.DAL.UnitOfWork;

@@ -3,7 +3,7 @@ using University.WPF.Core;
 
 namespace University.WPF.Services.Navigator;
 
-internal class Navigator : ObservableObject, INavigator
+public class Navigator : ObservableObject, INavigator
 {
     private readonly Func<Type, ViewModelBase> _viewModelFactory;
     private ViewModelBase _currentView;

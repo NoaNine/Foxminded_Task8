@@ -2,7 +2,7 @@
 
 namespace University.WPF.Services.Navigator;
 
-internal interface INavigator
+public interface INavigator
 {
     ViewModelBase CurrentView { get; }
 

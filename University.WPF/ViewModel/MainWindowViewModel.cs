@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using University.DAL.Models;
-using System.Windows;
-using University.Dal.UnitOfWork;
 using University.WPF.Services.Command;
 using University.WPF.Core;
+using University.WPF.Services.Navigator;
+using University.DAL.UnitOfWork;
+using University.WPF.ViewModel;
 
 namespace DesktopApp.ViewModel;
 
@@ -50,38 +51,24 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
-    #region Command to open window
-    private RelayCommand _openAddStudentWindow;
-    public RelayCommand OpenAddStudentWindow
+    private INavigator _navigator;
+    public INavigator Navigator
     {
-        get 
+        get => _navigator;
+        set
         {
-            return _openAddStudentWindow ?? new RelayCommand( obj =>
-            {
-                OpenAddStudentWindowMethod();
-            }
-            ); 
+            _navigator = value;
+            OnPropertyChanged();
         }
     }
+
+    #region Command to open page
+    public RelayCommand OpenGroupPage { get; private set; }
     #endregion
 
-    public MainWindowViewModel(IUnitOfWork unitOfWork)
+    public MainWindowViewModel(IUnitOfWork unitOfWork, INavigator navigator)
     {
-        
+        Navigator = navigator;
+        OpenGroupPage = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
     }
-
-    #region Method to open window
-    private void OpenAddStudentWindowMethod()
-    {
-        //AddStudentWindow addStudentWindow = new AddStudentWindow();
-        //SetCenterPositionAndOpen(addStudentWindow);
-    }
-
-    private void SetCenterPositionAndOpen(Window window)
-    {
-        window.Owner = Application.Current.MainWindow;
-        window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-        window.ShowDialog();
-    }
-    #endregion
 }

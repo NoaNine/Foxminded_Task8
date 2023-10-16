@@ -3,8 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:local="clr-namespace:DesktopApp.View"
-            xmlns:controls ="clr-namespace:University.WPF.View.Controls"
+            xmlns:local="clr-namespace:DesktopApp.View" 
+            xmlns:controls="clr-namespace:University.WPF.View.Controls"
             mc:Ignorable="d"
             Title="MainWindow" Height="450" Width="800"
             DataContext="{Binding Source={StaticResource Locator}, Path=MainVM}">
@@ -12,17 +12,23 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <controls:NavigationBar Grid.Column="0" 
-                                Grid.Row="0"
-                                Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="University"
+                   Background="{StaticResource BrushPrimary1}"
+                   FontSize="30"
+                   Padding="7"/>
+        <controls:SectionBar Grid.Row="1"
+                             Grid.ColumnSpan="2"/>
         <TreeView Grid.Column="0" 
-                  Grid.Row="1">
+                  Grid.Row="2">
             <TreeView.Resources>
                 <HierarchicalDataTemplate x:Key="Tree" 
                                           ItemsSource = "{Binding Path = Courses}">
@@ -38,7 +44,7 @@
             </TreeView.Resources>
         </TreeView>
         <Grid Grid.Column="1" 
-              Grid.Row="1">
+              Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -52,6 +58,7 @@
                 <TextBlock Text="Tutor:"/>
                 <TextBlock Text="LastName"/>
                 <TextBlock Text="FirstName"/>
+                <Button Content="OpenGroupPage" Command="{Binding Path=OpenGroupPage}"/>
             </StackPanel>
             <ListView Grid.Row="1" 
                       Grid.ColumnSpan="2"

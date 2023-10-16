@@ -7,9 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using University.Dal.UnitOfWork;
 using University.DAL;
 using University.DAL.UnitOfWork;
+using University.WPF.Core;
+using University.WPF.Services.Navigator;
+using University.WPF.View.Pages.Group;
+using University.WPF.ViewModel;
 
 namespace DesktopApp;
 
@@ -41,9 +44,14 @@ public partial class App : Application
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+        services.AddSingleton<INavigator, Navigator>();
+        services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+
         services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<GroupViewModel>();
 
         services.AddTransient<MainWindow>();
+        services.AddTransient<GroupPage>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)

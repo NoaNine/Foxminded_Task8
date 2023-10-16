@@ -1,6 +1,6 @@
 ﻿using University.DAL.Repositories;
 
-namespace University.Dal.UnitOfWork;
+namespace University.DAL.UnitOfWork;
 
 public interface IUnitOfWork
 {

@@ -1,6 +1,8 @@
-﻿namespace University.WPF.ViewModel;
+﻿using University.WPF.Core;
 
-class GroupViewModel
+namespace University.WPF.ViewModel;
+
+class GroupViewModel : ViewModelBase
 {
 
 }
