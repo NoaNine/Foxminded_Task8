@@ -2,10 +2,7 @@
 
 namespace University.WPF.ViewModel;
 
-class GroupViewModel : BaseViewModel
+class BreadcrumbBarViewModel : BaseViewModel
 {
-    public GroupViewModel()
-    {
 
-    }
 }

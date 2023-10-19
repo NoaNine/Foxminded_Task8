@@ -9,6 +9,5 @@ public class Group : BaseModel
     public int CourseId { get; set; }
     public Course Course { get; set; }
     public Teacher Tutor { get; set; }
-    public Teacher Teacher { get; set; }
     public ICollection<Student> Students { get; set; }
 }

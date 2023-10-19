@@ -1,6 +1,6 @@
 ﻿namespace University.DAL.Models.Base;
 
-public class HumanBaseModel : BaseModel
+public abstract class PersonBaseModel : BaseModel
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

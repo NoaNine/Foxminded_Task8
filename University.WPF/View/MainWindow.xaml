@@ -15,55 +15,11 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0"
-                   Grid.ColumnSpan="2"
-                   Text="University"
-                   Background="{StaticResource BrushPrimary1}"
-                   FontSize="30"
-                   Padding="7"/>
-        <controls:SectionBar Grid.Row="1"
-                             Grid.ColumnSpan="2"/>
-        <TreeView Grid.Column="0" 
-                  Grid.Row="2">
-            <TreeView.Resources>
-                <HierarchicalDataTemplate x:Key="Tree" 
-                                          ItemsSource = "{Binding Path = Courses}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock></TextBlock>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-                <DataTemplate x:Key="Leaf">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </TreeView.Resources>
-        </TreeView>
-        <Grid Grid.Column="1" 
-              Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal">
-                <TextBlock Text="Tutor:"/>
-                <TextBlock Text="LastName"/>
-                <TextBlock Text="FirstName"/>
-                <Button Content="OpenGroupPage" Command="{Binding Path=OpenGroupPage}"/>
-            </StackPanel>
-            <ListView Grid.Row="1" 
-                      Grid.ColumnSpan="2"
-                      ItemsSource="{Binding}">
-            </ListView>
-        </Grid>
+        <controls:SectionBar Grid.Row="0"/>
+        <controls:BreadcrumbBar Grid.Row="1"/>
+        <ContentPresenter Grid.Row="2"
+                          Content="{Binding Path=Navigator.GetCurrentView}">
+            
+        </ContentPresenter>
     </Grid>
 </Window>

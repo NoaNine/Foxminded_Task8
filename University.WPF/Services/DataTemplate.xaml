@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:controls="clr-namespace:University.WPF.View.Controls" 
+                    xmlns:view="clr-namespace:University.WPF.View.Group"
+                    xmlns:viewModel="clr-namespace:University.WPF.ViewModel">
+
+    <DataTemplate DataType="{x:Type TypeName=viewModel:SectionBarViewModel}">
+        <controls:SectionBar/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:BreadcrumbBarViewModel}">
+        <controls:BreadcrumbBar/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:GroupViewModel}">
+        <view:GroupView/>
+    </DataTemplate>
+    
+</ResourceDictionary>

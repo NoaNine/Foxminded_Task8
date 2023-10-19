@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace University.WPF.View.Pages.Student
+namespace University.WPF.View.Home
 {
     /// <summary>
-    /// Interaction logic for StudentPage.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class StudentPage : Page
+    public partial class HomeView : UserControl
     {
-        public StudentPage()
+        public HomeView()
         {
             InitializeComponent();
         }

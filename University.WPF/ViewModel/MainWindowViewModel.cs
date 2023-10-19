@@ -1,14 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using University.DAL.Models;
-using University.WPF.Services.Command;
-using University.WPF.Core;
-using University.WPF.Services.Navigator;
 using University.DAL.UnitOfWork;
-using University.WPF.ViewModel;
+using University.WPF.ViewModel.Base;
+using University.WPF.Services.Navigator;
 
 namespace DesktopApp.ViewModel;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : BaseViewModel
 {
     private ObservableCollection<Course> _courses;
     private ObservableCollection<Group> _groups;
@@ -62,13 +60,8 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
-    #region Command to open page
-    public RelayCommand OpenGroupPage { get; private set; }
-    #endregion
-
-    public MainWindowViewModel(IUnitOfWork unitOfWork, INavigator navigator)
+    public MainWindowViewModel(IUnitOfWork unitOfWork)
     {
-        Navigator = navigator;
-        OpenGroupPage = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
+
     }
 }

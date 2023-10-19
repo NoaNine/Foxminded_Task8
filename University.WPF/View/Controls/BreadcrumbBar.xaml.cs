@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace University.WPF.View.Pages.Student
+namespace University.WPF.View.Controls
 {
     /// <summary>
-    /// Interaction logic for EditStudentPage.xaml
+    /// Interaction logic for BreadcrumbBar.xaml
     /// </summary>
-    public partial class EditStudentPage : Page
+    public partial class BreadcrumbBar : UserControl
     {
-        public EditStudentPage()
+        public BreadcrumbBar()
         {
             InitializeComponent();
         }

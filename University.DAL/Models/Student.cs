@@ -2,7 +2,7 @@
 
 namespace University.DAL.Models;
 
-public class Student : HumanBaseModel
+public class Student : PersonBaseModel
 {
     public int GroupId { get; set; }
     public Group Group { get; set; }

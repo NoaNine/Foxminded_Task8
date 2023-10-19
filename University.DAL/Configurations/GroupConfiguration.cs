@@ -14,7 +14,7 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
             .OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(g => g.Name)
             .IsUnique();
-        builder.HasOne(g => g.Tutor) // or needed to create a new entity tutor and add relationships?
+        builder.HasOne(g => g.Tutor)
             .WithOne(t => t.Group)
             .HasForeignKey<Teacher>(t => t.GroupId);
     }

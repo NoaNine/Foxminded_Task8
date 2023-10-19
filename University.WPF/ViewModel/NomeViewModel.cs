@@ -2,10 +2,7 @@
 
 namespace University.WPF.ViewModel;
 
-class GroupViewModel : BaseViewModel
+class NomeViewModel : BaseViewModel
 {
-    public GroupViewModel()
-    {
 
-    }
 }

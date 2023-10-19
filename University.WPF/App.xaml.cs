@@ -9,9 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using University.DAL;
 using University.DAL.UnitOfWork;
-using University.WPF.Core;
+using University.WPF.ViewModel.Base;
 using University.WPF.Services.Navigator;
-using University.WPF.View.Pages.Group;
+using University.WPF.View.Group;
 using University.WPF.ViewModel;
 
 namespace DesktopApp;
@@ -45,13 +45,14 @@ public partial class App : Application
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddSingleton<INavigator, Navigator>();
-        services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+        services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
 
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<GroupViewModel>();
+        services.AddSingleton<SectionBarViewModel>();
 
         services.AddTransient<MainWindow>();
-        services.AddTransient<GroupPage>();
+        services.AddTransient<GroupView>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)

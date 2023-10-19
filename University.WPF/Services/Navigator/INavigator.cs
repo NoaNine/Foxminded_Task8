@@ -1,10 +1,10 @@
-﻿using University.WPF.Core;
+﻿using University.WPF.ViewModel.Base;
 
 namespace University.WPF.Services.Navigator;
 
 public interface INavigator
 {
-    ViewModelBase CurrentView { get; }
+    BaseViewModel GetCurrentView { get; }
 
-    void NavigateTo<T>() where T : ViewModelBase;
+    void NavigateTo<T>() where T : BaseViewModel;
 }

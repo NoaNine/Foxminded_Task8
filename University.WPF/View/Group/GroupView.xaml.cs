@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace University.WPF.View.Pages.Curse
+namespace University.WPF.View.Group
 {
     /// <summary>
-    /// Interaction logic for CreateCoursePage.xaml
+    /// Interaction logic for GroupView.xaml
     /// </summary>
-    public partial class CreateCoursePage : Page
+    public partial class GroupView : UserControl
     {
-        public CreateCoursePage()
+        public GroupView()
         {
             InitializeComponent();
         }

@@ -1,6 +1,8 @@
-﻿namespace University.WPF.ViewModel;
+﻿using University.WPF.ViewModel.Base;
 
-class CourseViewModel
+namespace University.WPF.ViewModel;
+
+class CourseViewModel : BaseViewModel
 {
 
 }

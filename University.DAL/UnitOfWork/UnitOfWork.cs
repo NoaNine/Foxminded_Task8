@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using University.DAL.Models.Base;
 using University.DAL.Repositories;
 
 namespace University.DAL.UnitOfWork;
@@ -13,7 +14,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
+    public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseModel
     {
         return new Repository<TEntity>(_context);
     }

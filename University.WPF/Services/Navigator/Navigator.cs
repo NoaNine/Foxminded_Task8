@@ -1,31 +1,31 @@
 ﻿using System;
-using University.WPF.Core;
+using University.WPF.ViewModel.Base;
 
 namespace University.WPF.Services.Navigator;
 
 public class Navigator : ObservableObject, INavigator
 {
-    private readonly Func<Type, ViewModelBase> _viewModelFactory;
-    private ViewModelBase _currentView;
+    private readonly Func<Type, BaseViewModel> _viewModelFactory;
+    private BaseViewModel _currentView;
 
-    public ViewModelBase CurrentView
+    public BaseViewModel GetCurrentView
     { 
         get => _currentView;
         private set
         {
             _currentView = value;
-            OnPropertyChanged("CurrentView");
+            OnPropertyChanged("GetCurrentView");
         }
     }
 
-    public Navigator(Func<Type, ViewModelBase> viewModelFactory)
+    public Navigator(Func<Type, BaseViewModel> viewModelFactory)
     {
         _viewModelFactory = viewModelFactory;
     }
 
-    public void NavigateTo<T>() where T : ViewModelBase
+    public void NavigateTo<T>() where T : BaseViewModel
     {
-        ViewModelBase viewModelBase = _viewModelFactory.Invoke(typeof(T));
-        CurrentView = viewModelBase;
+        BaseViewModel viewModelBase = _viewModelFactory.Invoke(typeof(T));
+        GetCurrentView = viewModelBase;
     }
 }
