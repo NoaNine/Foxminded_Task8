@@ -28,8 +28,8 @@ class SectionBarViewModel : BaseViewModel
         _navigator = navigator;
         OpenGroupView = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
         OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<HomeViewModel>(); }, o => true);
-        OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<CourseViewModel>(); }, o => true);
-        OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<StudentViewModel>(); }, o => true);
-        OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<TeacherViewModel>(); }, o => true);
+        OpenCourseView = new RelayCommand(o => { Navigator.NavigateTo<CourseViewModel>(); }, o => true);
+        OpenStudentView = new RelayCommand(o => { Navigator.NavigateTo<StudentViewModel>(); }, o => true);
+        OpenTeacherView = new RelayCommand(o => { Navigator.NavigateTo<TeacherViewModel>(); }, o => true);
     }
 }

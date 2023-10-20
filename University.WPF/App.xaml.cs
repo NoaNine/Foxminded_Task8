@@ -11,9 +11,7 @@ using University.DAL;
 using University.DAL.UnitOfWork;
 using University.WPF.ViewModel.Base;
 using University.WPF.Services.Navigator;
-using University.WPF.View.Group;
 using University.WPF.ViewModel;
-using University.WPF.View.Home;
 
 namespace DesktopApp;
 
@@ -43,9 +41,9 @@ public partial class App : Application
         IServiceCollection services)
     {
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-        services.AddSingleton<INavigator, Navigator>();
+        services.AddScoped<INavigator, Navigator>();
         services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
 
         services.AddSingleton<MainWindowViewModel>();
@@ -53,10 +51,11 @@ public partial class App : Application
         services.AddSingleton<SectionBarViewModel>();
         services.AddSingleton<BreadcrumbBarViewModel>();
         services.AddSingleton<CourseViewModel>();
+        services.AddSingleton<HomeViewModel>();
         services.AddSingleton<StudentViewModel>();
         services.AddSingleton<TeacherViewModel>();
 
-        services.AddTransient<MainWindow>();
+        services.AddScoped<MainWindow>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)
