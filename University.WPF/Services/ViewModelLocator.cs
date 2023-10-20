@@ -2,7 +2,6 @@
 using DesktopApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using University.WPF.ViewModel;
-using University.WPF.ViewModel.Base;
 
 namespace University.WPF.Services;
 

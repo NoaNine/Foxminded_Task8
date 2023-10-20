@@ -13,13 +13,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <controls:SectionBar Grid.Row="0"/>
         <controls:BreadcrumbBar Grid.Row="1"/>
         <ContentPresenter Grid.Row="2"
                           Content="{Binding Path=Navigator.GetCurrentView}">
-            
         </ContentPresenter>
     </Grid>
 </Window>

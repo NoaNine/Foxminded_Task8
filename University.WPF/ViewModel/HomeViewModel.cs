@@ -2,7 +2,10 @@
 
 namespace University.WPF.ViewModel;
 
-class NomeViewModel : BaseViewModel
+class HomeViewModel : BaseViewModel
 {
+    public HomeViewModel()
+    {
 
+    }
 }

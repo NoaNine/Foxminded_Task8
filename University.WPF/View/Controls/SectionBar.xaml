@@ -30,16 +30,20 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <RadioButton Grid.Column="0"
-                    Content="Home"/>
+                         Content="Home"
+                         Command="{Binding Path=OpenHomeView}"/>
             <RadioButton Grid.Column="1"
-                    Content="Course"/>
+                         Content="Course"
+                         Command="{Binding Path=OpenGroupView}"/>
             <RadioButton Grid.Column="2"
                          Content="Group"
                          Command="{Binding Path=OpenGroupView}"/>
             <RadioButton Grid.Column="3" 
-                    Content="Student"/>
+                         Content="Student"
+                         Command="{Binding Path=OpenGroupView}"/>
             <RadioButton Grid.Column="4" 
-                    Content="Teacher"/>
+                         Content="Teacher"
+                         Command="{Binding Path=OpenGroupView}"/>
         </Grid>
     </Grid>
 </UserControl>

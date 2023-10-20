@@ -13,6 +13,7 @@ using University.WPF.ViewModel.Base;
 using University.WPF.Services.Navigator;
 using University.WPF.View.Group;
 using University.WPF.ViewModel;
+using University.WPF.View.Home;
 
 namespace DesktopApp;
 
@@ -50,9 +51,11 @@ public partial class App : Application
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<GroupViewModel>();
         services.AddSingleton<SectionBarViewModel>();
+        services.AddSingleton<HomeViewModel>();
 
         services.AddTransient<MainWindow>();
         services.AddTransient<GroupView>();
+        services.AddTransient<HomeView>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)

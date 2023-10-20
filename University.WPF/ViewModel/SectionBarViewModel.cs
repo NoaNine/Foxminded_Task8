@@ -18,10 +18,12 @@ class SectionBarViewModel : BaseViewModel
     }
 
     public RelayCommand OpenGroupView { get; private set; }
+    public RelayCommand OpenHomeView { get; private set; }
 
     public SectionBarViewModel(INavigator navigator)
     {
         _navigator = navigator;
         OpenGroupView = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
+        OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<HomeViewModel>(); }, o => true);
     }
 }

@@ -23,7 +23,7 @@ public class Navigator : ObservableObject, INavigator
         _viewModelFactory = viewModelFactory;
     }
 
-    public void NavigateTo<T>() where T : BaseViewModel
+    public void NavigateTo<T>() where T : BaseViewModel 
     {
         BaseViewModel viewModelBase = _viewModelFactory.Invoke(typeof(T));
         GetCurrentView = viewModelBase;
