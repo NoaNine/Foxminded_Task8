@@ -3,7 +3,7 @@ using University.DAL.Models;
 
 namespace University.DAL.Extensions;
 
-public static class ModelBuilderExtensions //delete
+public static class ModelBuilderExtensions
 {
     public static void Seed(this ModelBuilder modelBuilder)
     {

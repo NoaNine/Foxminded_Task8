@@ -34,16 +34,16 @@
                          Command="{Binding Path=OpenHomeView}"/>
             <RadioButton Grid.Column="1"
                          Content="Course"
-                         Command="{Binding Path=OpenGroupView}"/>
+                         Command="{Binding Path=OpenCourseView}"/>
             <RadioButton Grid.Column="2"
                          Content="Group"
                          Command="{Binding Path=OpenGroupView}"/>
             <RadioButton Grid.Column="3" 
                          Content="Student"
-                         Command="{Binding Path=OpenGroupView}"/>
+                         Command="{Binding Path=OpenStudentView}"/>
             <RadioButton Grid.Column="4" 
                          Content="Teacher"
-                         Command="{Binding Path=OpenGroupView}"/>
+                         Command="{Binding Path=OpenTeacherView}"/>
         </Grid>
     </Grid>
 </UserControl>

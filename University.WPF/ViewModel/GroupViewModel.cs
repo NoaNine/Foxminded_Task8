@@ -1,10 +1,11 @@
-﻿using University.WPF.ViewModel.Base;
+﻿using University.DAL.UnitOfWork;
+using University.WPF.ViewModel.Base;
 
 namespace University.WPF.ViewModel;
 
 class GroupViewModel : BaseViewModel
 {
-    public GroupViewModel()
+    public GroupViewModel(IUnitOfWork unitOfWork)
     {
 
     }

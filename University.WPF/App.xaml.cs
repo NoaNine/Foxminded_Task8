@@ -51,11 +51,12 @@ public partial class App : Application
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<GroupViewModel>();
         services.AddSingleton<SectionBarViewModel>();
-        services.AddSingleton<HomeViewModel>();
+        services.AddSingleton<BreadcrumbBarViewModel>();
+        services.AddSingleton<CourseViewModel>();
+        services.AddSingleton<StudentViewModel>();
+        services.AddSingleton<TeacherViewModel>();
 
         services.AddTransient<MainWindow>();
-        services.AddTransient<GroupView>();
-        services.AddTransient<HomeView>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)

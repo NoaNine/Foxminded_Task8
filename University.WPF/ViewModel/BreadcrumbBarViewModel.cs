@@ -4,5 +4,8 @@ namespace University.WPF.ViewModel;
 
 class BreadcrumbBarViewModel : BaseViewModel
 {
+    public BreadcrumbBarViewModel()
+    {
 
+    }
 }
