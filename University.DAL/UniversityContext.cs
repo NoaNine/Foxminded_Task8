@@ -2,6 +2,7 @@
 using University.DAL.Extensions;
 using University.DAL.Models;
 using University.DAL.Configurations;
+using System.Reflection;
 
 namespace University.DAL;
 
@@ -19,10 +20,7 @@ public class UniversityContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new CoursesConfiguration());
-        modelBuilder.ApplyConfiguration(new StudentConfiguration());
-        modelBuilder.ApplyConfiguration(new TeacherConfiguration());
-        modelBuilder.ApplyConfiguration(new GroupConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         modelBuilder.Seed(); //delete
     }
