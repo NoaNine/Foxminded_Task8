@@ -1,14 +1,11 @@
-﻿using DesktopApp.ViewModel;
-using System;
-using System.Windows;
+﻿using System.Windows;
 
-namespace DesktopApp.View;
+namespace University.WPF.View;
 
 public partial class MainWindow : Window
 {
-    public MainWindow(MainWindowViewModel viewModel)
+    public MainWindow()
     {
-        DataContext = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         InitializeComponent();
     }
 }

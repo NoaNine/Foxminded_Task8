@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using University.DAL.Extensions;
 using University.DAL.Models;
-using University.DAL.Configurations;
 using System.Reflection;
 
 namespace University.DAL;

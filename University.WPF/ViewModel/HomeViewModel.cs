@@ -48,9 +48,10 @@ class HomeViewModel : BaseViewModel
             OnPropertyChanged("Teachers");
         }
     }
+
     public HomeViewModel(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        //_courses = new ObservableCollection<Course>(unitOfWork.GetRepository<Course>().GetAll());
+        _courses = new ObservableCollection<Course>(unitOfWork.GetRepository<Course>().GetAll());
     }
 }

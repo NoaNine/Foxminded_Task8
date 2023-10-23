@@ -21,7 +21,7 @@
             <Button Grid.Column="0" 
                     Content="Back"/>
             <Button Grid.Column="1" 
-                    Content="forward"/>
+                    Content="Forward"/>
         </Grid>
     </Grid>
 </UserControl>

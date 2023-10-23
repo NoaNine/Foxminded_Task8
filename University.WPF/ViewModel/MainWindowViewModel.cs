@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using University.WPF.Services.Navigator;
+﻿using University.WPF.Services.Navigator;
 using University.WPF.ViewModel.Base;
 
-namespace DesktopApp.ViewModel;
+namespace University.WPF.ViewModel;
 
 public class MainWindowViewModel : BaseViewModel
 {

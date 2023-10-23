@@ -1,6 +1,4 @@
-﻿using DesktopApp;
-using DesktopApp.ViewModel;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using University.WPF.ViewModel;
 using University.WPF.ViewModel.Base;
 

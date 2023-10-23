@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using DesktopApp.View;
-using DesktopApp.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,8 +10,9 @@ using University.DAL.UnitOfWork;
 using University.WPF.ViewModel.Base;
 using University.WPF.Services.Navigator;
 using University.WPF.ViewModel;
+using University.WPF.View;
 
-namespace DesktopApp;
+namespace University.WPF;
 
 public partial class App : Application
 {
@@ -33,7 +32,6 @@ public partial class App : Application
                     ConfigureServices(context.Configuration, services);
                 })
                 .Build();
-
         ServiceProvider = host.Services;
     }
 
@@ -41,19 +39,19 @@ public partial class App : Application
         IServiceCollection services)
     {
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
-        services.AddTransient<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<INavigator, Navigator>();
         services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
 
-        services.AddSingleton<MainWindowViewModel>();
-        services.AddSingleton<GroupViewModel>();
-        services.AddSingleton<SectionBarViewModel>();
-        services.AddSingleton<BreadcrumbBarViewModel>();
-        services.AddSingleton<CourseViewModel>();
-        services.AddSingleton<HomeViewModel>();
-        services.AddSingleton<StudentViewModel>();
-        services.AddSingleton<TeacherViewModel>();
+        services.AddScoped<MainWindowViewModel>();
+        services.AddScoped<GroupViewModel>();
+        services.AddScoped<SectionBarViewModel>();
+        services.AddScoped<BreadcrumbBarViewModel>();
+        services.AddScoped<CourseViewModel>();
+        services.AddScoped<HomeViewModel>();
+        services.AddScoped<StudentViewModel>();
+        services.AddScoped<TeacherViewModel>();
 
         services.AddScoped<MainWindow>();
     }
