@@ -21,6 +21,6 @@ public class UniversityContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        modelBuilder.Seed(); //delete
+        modelBuilder.Seed(); //TODO delete
     }
 }

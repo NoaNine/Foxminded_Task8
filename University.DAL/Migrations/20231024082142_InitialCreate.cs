@@ -73,7 +73,7 @@ namespace University.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -84,8 +84,7 @@ namespace University.DAL.Migrations
                         name: "FK_Teachers_Groups_GroupId",
                         column: x => x.GroupId,
                         principalTable: "Groups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -97,6 +96,16 @@ namespace University.DAL.Migrations
                     { 2, "", "Комп`ютерна інженерія" },
                     { 3, "", "Електроніка та електромеханіка" },
                     { 4, "", "Юридичне право" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Teachers",
+                columns: new[] { "Id", "FirstName", "GroupId", "LastName" },
+                values: new object[,]
+                {
+                    { 2, "Василій", null, "Моржов" },
+                    { 3, "Іван", null, "Куклінський" },
+                    { 8, "Ірина", null, "Чуба" }
                 });
 
             migrationBuilder.InsertData(
@@ -214,7 +223,8 @@ namespace University.DAL.Migrations
                 name: "IX_Teachers_GroupId",
                 table: "Teachers",
                 column: "GroupId",
-                unique: true);
+                unique: true,
+                filter: "[GroupId] IS NOT NULL");
         }
 
         /// <inheritdoc />

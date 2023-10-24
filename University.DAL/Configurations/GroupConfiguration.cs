@@ -16,6 +16,7 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
             .IsUnique();
         builder.HasOne(g => g.Tutor)
             .WithOne(t => t.Group)
-            .HasForeignKey<Teacher>(t => t.GroupId);
+            .HasForeignKey<Teacher>(t => t.GroupId)
+            .IsRequired(false);
     }
 }
