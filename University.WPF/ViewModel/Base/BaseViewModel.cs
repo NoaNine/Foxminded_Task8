@@ -1,5 +1,4 @@
-﻿using University.DAL.UnitOfWork;
-using University.WPF.Services;
+﻿using University.WPF.Services;
 
 namespace University.WPF.ViewModel.Base;
 

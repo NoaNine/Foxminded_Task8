@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using University.DAL.Models.Base;
 using University.DAL.Repositories;
+using University.DAL.Exceptions;
 
 namespace University.DAL.UnitOfWork;
 
@@ -27,7 +28,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
         catch (DbUpdateException dbEx)
         {
-            throw new Exception(dbEx.Message, dbEx);
+            throw new DataAccessException(dbEx.Message, dbEx);
         }
     }
 

@@ -10,9 +10,9 @@
                 x:Key="Locator"/>
             
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Common.xaml"/>
-                <ResourceDictionary Source="Styles/Button.xaml"/>
-                <ResourceDictionary Source="Services/DataTemplate.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/Common.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="Resources/DataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -15,9 +15,9 @@
             <TreeView Grid.Column="0" ItemsSource="{Binding Path=Courses}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate x:Key="Tree"
-                                              ItemsSource = "{Binding Path=Name}">
+                                              ItemsSource = "{Binding Groups}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding  Path=Name}"/>
+                            <TextBlock Text="{Binding Name}"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                     <DataTemplate x:Key="Leaf">
