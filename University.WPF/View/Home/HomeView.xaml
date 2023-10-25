@@ -31,14 +31,20 @@
                         Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Tutor:"/>
-                <TextBlock Text="LastName"/>
-                <TextBlock Text="FirstName"/>
+                <TextBlock Text="LastName"
+                           Margin="10 0 0 0"/>
+                <TextBlock Text="FirstName"
+                           Margin="4 0 0 0"/>
             </StackPanel>
             <ListView ItemsSource="{Binding}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="First name" Width="auto" DisplayMemberBinding="{Binding}" />
-                        <GridViewColumn Header="Last name" Width="auto" DisplayMemberBinding="{Binding}" />
+                        <GridViewColumn Header="First name" 
+                                        Width="auto" 
+                                        DisplayMemberBinding="{Binding}" />
+                        <GridViewColumn Header="Last name" 
+                                        Width="auto" 
+                                        DisplayMemberBinding="{Binding}" />
                     </GridView>
                 </ListView.View>
             </ListView>

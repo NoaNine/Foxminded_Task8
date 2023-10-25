@@ -8,20 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=BreadcrumbBarVM}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" 
-                    Content="Back"/>
-            <Button Grid.Column="1" 
-                    Content="Forward"/>
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" 
+                    Content="{StaticResource ImageBrushArrowLeft}"/>
+        <Button Grid.Column="1" 
+                    Content="{StaticResource ImageBrushArrowRight}"/>
     </Grid>
 </UserControl>

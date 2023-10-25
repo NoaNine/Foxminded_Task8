@@ -13,10 +13,15 @@
                 <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0">
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TreeView Grid.Row="0">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate x:Key="Tree" 
-                                          ItemsSource = "{Binding}">
+                    <HierarchicalDataTemplate x:Key="Tree"
+                                              ItemsSource = "{Binding}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock></TextBlock>
                         </StackPanel>
@@ -28,28 +33,53 @@
                     </DataTemplate>
                 </TreeView.Resources>
             </TreeView>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                Content="Create"
+                HorizontalAlignment="Stretch"
+                Command="{Binding}"/>
+                <Button Grid.Column="1"
+                Content="Edit"
+                HorizontalAlignment="Stretch"
+                Command="{Binding}"/>
+                <Button Grid.Column="2"
+                Content="Delete"
+                HorizontalAlignment="Stretch"
+                Command="{Binding}"/>
+            </Grid>
+        </Grid>
         <StackPanel Grid.Column="1"
                     Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Group Name:"/>
-                <TextBlock Text="name"/>
+                <TextBlock Text="name"
+                           Margin="10 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Course:"/>
+                <TextBlock Text="name"
+                           Margin="10 0 0 0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Amount student:"/>
-                <TextBlock Text="count"/>
+                <TextBlock Text="count"
+                           Margin="10 0 0 0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Tutor:"/>
-                <TextBlock Text="firstName"/>
-                <TextBlock Text="lastName"/>
+                <TextBlock Text="firstName"
+                           Margin="10 0 2 0"/>
+                <TextBlock Text="lastName"
+                           Margin="2 0 10 0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Width="100" 
-                        Content="Delete all student"/>
-                <Button Width="100" 
-                        Content="Import student"/>
-                <Button Width="100" 
-                        Content="Export student"/>
+                <Button Width="150" 
+                        Content="Import or export students"/>
             </StackPanel>
         </StackPanel>
     </Grid>

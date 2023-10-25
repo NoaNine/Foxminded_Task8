@@ -20,7 +20,7 @@ public class Navigator : ObservableObject, INavigator
 
     public Navigator(Func<Type, BaseViewModel> viewModelFactory)
     {
-        _viewModelFactory = viewModelFactory;
+        _viewModelFactory = viewModelFactory ?? throw new ArgumentNullException(nameof(viewModelFactory));
     }
 
     public void NavigateTo<T>() where T : BaseViewModel 
