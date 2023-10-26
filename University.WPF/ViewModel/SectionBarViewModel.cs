@@ -10,7 +10,7 @@ class SectionBarViewModel : BaseViewModel
     public INavigator Navigator
     {
         get => _navigator;
-        set
+        private set
         {
             _navigator = value;
             OnPropertyChanged();
@@ -25,7 +25,7 @@ class SectionBarViewModel : BaseViewModel
 
     public SectionBarViewModel(INavigator navigator)
     {
-        _navigator = navigator;
+        Navigator = navigator;
         OpenGroupView = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
         OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<HomeViewModel>(); }, o => true);
         OpenCourseView = new RelayCommand(o => { Navigator.NavigateTo<CourseViewModel>(); }, o => true);

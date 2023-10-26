@@ -8,6 +8,69 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=CourseVM}">
     <Grid>
-        <TextBlock>Hello</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TreeView Grid.Row="0">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate x:Key="Tree"
+                                              ItemsSource = "{Binding}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock></TextBlock>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate x:Key="Leaf">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                Content="Create"
+                HorizontalAlignment="Stretch"
+                Command="{Binding Path=OpenCreateCourseView}"/>
+                <Button Grid.Column="1"
+                Content="Edit"
+                HorizontalAlignment="Stretch"
+                Command="{Binding Path=OpenEditCourseView}"/>
+                <Button Grid.Column="2"
+                Content="Delete"
+                HorizontalAlignment="Stretch"
+                Command="{Binding Path=DeleteCourse}"/>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Course Name:"/>
+                <TextBlock Text="name"
+                           Margin="10 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Amount group:"/>
+                <TextBlock Text="count"
+                           Margin="10 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Amount student:"/>
+                <TextBlock Text="count"
+                           Margin="10 0 0 0"/>
+            </StackPanel>
+            <TextBlock Text="Description:"/>
+            <TextBlock Text="text"/>
+        </StackPanel>
     </Grid>
 </UserControl>

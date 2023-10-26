@@ -42,15 +42,15 @@
                 <Button Grid.Column="0"
                 Content="Create"
                 HorizontalAlignment="Stretch"
-                Command="{Binding}"/>
+                Command="{Binding Path=OpenCreateGroupView}"/>
                 <Button Grid.Column="1"
                 Content="Edit"
                 HorizontalAlignment="Stretch"
-                Command="{Binding}"/>
+                Command="{Binding Path=OpenEditGroupView}"/>
                 <Button Grid.Column="2"
                 Content="Delete"
                 HorizontalAlignment="Stretch"
-                Command="{Binding}"/>
+                Command="{Binding Path=DeleteGroup}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"

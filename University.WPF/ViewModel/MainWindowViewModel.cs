@@ -18,6 +18,6 @@ public class MainWindowViewModel : BaseViewModel
 
     public MainWindowViewModel(INavigator navigator)
     {
-        _navigator = navigator;
+        Navigator = navigator;
     }
 }

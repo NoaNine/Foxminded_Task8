@@ -12,17 +12,17 @@
                 <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding Path=Courses}">
+            <TreeView Grid.Column="0" ItemsSource="{Binding}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate x:Key="Tree"
-                                              ItemsSource = "{Binding Groups}">
+                                              ItemsSource = "{Binding}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding}"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                     <DataTemplate x:Key="Leaf">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock/>
+                            <TextBlock Text="{Binding}"/>
                         </StackPanel>
                     </DataTemplate>
                 </TreeView.Resources>

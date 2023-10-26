@@ -13,8 +13,10 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" 
-                    Content="{StaticResource ImageBrushArrowLeft}"/>
-        <Button Grid.Column="1" 
-                    Content="{StaticResource ImageBrushArrowRight}"/>
+                Content="{StaticResource ImageBrushArrowLeft}"
+                Command="{Binding}"/>
+        <Button Grid.Column="1"
+                Content="{StaticResource ImageBrushArrowRight}"
+                Command="{Binding}"/>
     </Grid>
 </UserControl>
