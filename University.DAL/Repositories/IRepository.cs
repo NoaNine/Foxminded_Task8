@@ -1,8 +1,9 @@
 ﻿using System.Linq.Expressions;
+using University.DAL.Models.Base;
 
 namespace University.DAL.Repositories;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity> where TEntity : BaseModel
 {
     TEntity GetByID(object entity);
     IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);

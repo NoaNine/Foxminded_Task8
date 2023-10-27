@@ -1,9 +1,10 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using University.DAL.Models.Base;
 
 namespace University.DAL.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseModel
 {
     private readonly UniversityContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
