@@ -17,15 +17,15 @@
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding}">
+            <ListView ItemsSource="{Binding Path=Students}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="First name" 
                                         Width="auto" 
-                                        DisplayMemberBinding="{Binding}" />
+                                        DisplayMemberBinding="{Binding FirstName}" />
                         <GridViewColumn Header="Last name" 
                                         Width="auto" 
-                                        DisplayMemberBinding="{Binding}" />
+                                        DisplayMemberBinding="{Binding LastName}" />
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -52,6 +52,6 @@ class HomeViewModel : BaseViewModel
     public HomeViewModel(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        _courses = new ObservableCollection<Course>(unitOfWork.GetRepository<Course>().GetAll());
+        Courses = new ObservableCollection<Course>(unitOfWork.GetRepository<Course>().GetAll());
     }
 }

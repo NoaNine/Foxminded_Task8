@@ -11,22 +11,24 @@
         <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding}">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate x:Key="Tree"
-                                              ItemsSource = "{Binding}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}"/>
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                    <DataTemplate x:Key="Leaf">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeView.Resources>
-            </TreeView>
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0" ItemsSource="{Binding Courses}">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate x:Key="Tree"
+                                              ItemsSource = "{Binding}"
+                                              DataType="">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <DataTemplate x:Key="Leaf"
+                                  DataType="">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
         <StackPanel Grid.Column="1"
                         Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
