@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.ViewModel.Base;
@@ -8,50 +10,26 @@ namespace University.WPF.ViewModel;
 class HomeViewModel : BaseViewModel
 {
     private readonly IUnitOfWork _unitOfWork;
-    private ObservableCollection<Course> _courses;
-    private ObservableCollection<Group> _groups;
-    private ObservableCollection<Student> _students;
-    private ObservableCollection<Teacher> _teachers;
-    public ObservableCollection<Course> Courses
-    {
-        get => _courses;
-        private set
-        {
-            _courses = value;
-            OnPropertyChanged("Courses");
-        }
-    }
-    public ObservableCollection<Group> Groups
-    {
-        get => _groups;
-        private set
-        {
-            _groups = value;
-            OnPropertyChanged("Groups");
-        }
-    }
-    public ObservableCollection<Student> Students
-    {
-        get => _students;
-        private set
-        {
-            _students = value;
-            OnPropertyChanged("Students");
-        }
-    }
-    public ObservableCollection<Teacher> Teachers
-    {
-        get => _teachers;
-        private set
-        {
-            _teachers = value;
-            OnPropertyChanged("Teachers");
-        }
-    }
+    public ObservableCollection<Course> Courses {  get; private set; }
 
     public HomeViewModel(IUnitOfWork unitOfWork)
     {
-        _unitOfWork = unitOfWork;
-        Courses = new ObservableCollection<Course>(unitOfWork.GetRepository<Course>().GetAll());
+        _unitOfWork = unitOfWork ?? throw new ArgumentNullException("unitOfWork");
+        LoadData();
+    }
+
+    private void LoadData() 
+    {
+        Courses = new ObservableCollection<Course>(_unitOfWork.GetRepository<Course>().GetAll());
+        foreach (var course in Courses)
+        {
+            course.Groups = (ICollection<Group>)_unitOfWork.GetRepository<Group>().GetAll(g => g.CourseId == course.Id);
+            foreach (var group in course.Groups)
+            {
+                group.Students = (ICollection<Student>)_unitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
+                group.Course = _unitOfWork.GetRepository<Course>().GetByID(group.CourseId);
+                group.Tutor = _unitOfWork.GetRepository<Teacher>().GetByID(group.Id);
+            }
+        }
     }
 }

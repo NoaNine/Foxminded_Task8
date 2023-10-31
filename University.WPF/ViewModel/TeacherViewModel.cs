@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -9,8 +10,8 @@ namespace University.WPF.ViewModel;
 
 class TeacherViewModel : BaseViewModel
 {
+    private IUnitOfWork _unitOfWork;
     private INavigator _navigator;
-    private ObservableCollection<Teacher> _teachers;
     public INavigator Navigator
     {
         get => _navigator;
@@ -20,22 +21,24 @@ class TeacherViewModel : BaseViewModel
             OnPropertyChanged();
         }
     }
-    public ObservableCollection<Teacher> Teachers
-    {
-        get => _teachers;
-        private set
-        {
-            _teachers = value;
-            OnPropertyChanged("Teachers");
-        }
-    }
     public RelayCommand OpenAddTeacherView { get; private set; }
     public RelayCommand OpenEditTeacherView { get; private set; }
     public RelayCommand DeleteTeacher { get; private set; }
+    public ObservableCollection<Teacher> Teachers { get; private set; }
 
     public TeacherViewModel(IUnitOfWork unitOfWork, INavigator navigator)
     {
-        Navigator = navigator;
-        Teachers = new ObservableCollection<Teacher>(unitOfWork.GetRepository<Teacher>().GetAll());
+        _unitOfWork = unitOfWork;
+        Navigator = navigator ?? throw new ArgumentNullException("navigator");
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        Teachers = new ObservableCollection<Teacher>(_unitOfWork.GetRepository<Teacher>().GetAll());
+        foreach (var teacher in Teachers)
+        {
+            teacher.Group = _unitOfWork.GetRepository<Group>().GetByID(teacher.GroupId);
+        }    
     }
 }

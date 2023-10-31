@@ -2,9 +2,9 @@
 
 namespace University.WPF.ViewModel.Base;
 
-public class BaseViewModel : ObservableObject
+public abstract class BaseViewModel : ObservableObject
 {
-    public BaseViewModel()
+    public BaseViewModel() //TODO implement unitOfWork here and load data?
     {
 
     }

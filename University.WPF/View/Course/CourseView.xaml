@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:University.WPF.View.Course"
+             xmlns:m="clr-namespace:University.DAL.Models;assembly=University.DAL"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=CourseVM}">
@@ -17,20 +18,20 @@
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TreeView Grid.Row="0">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate x:Key="Tree"
-                                              ItemsSource = "{Binding}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock></TextBlock>
-                        </StackPanel>
+            <TreeView Grid.Column="0" 
+                      x:Name="MainTreeView" 
+                      ItemsSource="{Binding Courses}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Groups}" 
+                                              DataType="{x:Type m:Course}">
+                        <Label Content="{Binding Name}"/>
+                        <HierarchicalDataTemplate.ItemTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type m:Group}">
+                                <Label Content="{Binding Name}"/>
+                            </HierarchicalDataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>
-                    <DataTemplate x:Key="Leaf">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeView.Resources>
+                </TreeView.ItemTemplate>
             </TreeView>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -39,17 +40,17 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
-                Content="Create"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=OpenCreateCourseView}"/>
+                        Content="Create"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=OpenCreateCourseView}"/>
                 <Button Grid.Column="1"
-                Content="Edit"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=OpenEditCourseView}"/>
+                        Content="Edit"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=OpenEditCourseView}"/>
                 <Button Grid.Column="2"
-                Content="Delete"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=DeleteCourse}"/>
+                        Content="Delete"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=DeleteCourse}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"

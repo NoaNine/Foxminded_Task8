@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:University.WPF.View.Group"
-             xmlns:controls="clr-namespace:University.WPF.View.Controls"
+             xmlns:m="clr-namespace:University.DAL.Models;assembly=University.DAL"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=GroupVM}">
@@ -18,20 +18,23 @@
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TreeView Grid.Row="0">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate x:Key="Tree"
-                                              ItemsSource = "{Binding}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock></TextBlock>
-                        </StackPanel>
+            <TreeView Grid.Column="0" 
+                      x:Name="MainTreeView" 
+                      ItemsSource="{Binding Groups}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Students}" 
+                                              DataType="{x:Type m:Group}">
+                        <Label Content="{Binding Name}"/>
+                        <HierarchicalDataTemplate.ItemTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type m:Student}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding FirstName}"/>
+                                    <Label Content="{Binding LastName}"/>
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>
-                    <DataTemplate x:Key="Leaf">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeView.Resources>
+                </TreeView.ItemTemplate>
             </TreeView>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -40,17 +43,17 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
-                Content="Create"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=OpenCreateGroupView}"/>
+                        Content="Create"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=OpenCreateGroupView}"/>
                 <Button Grid.Column="1"
-                Content="Edit"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=OpenEditGroupView}"/>
+                        Content="Edit"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=OpenEditGroupView}"/>
                 <Button Grid.Column="2"
-                Content="Delete"
-                HorizontalAlignment="Stretch"
-                Command="{Binding Path=DeleteGroup}"/>
+                        Content="Delete"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding Path=DeleteGroup}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"

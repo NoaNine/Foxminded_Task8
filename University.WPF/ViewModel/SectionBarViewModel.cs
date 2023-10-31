@@ -1,4 +1,5 @@
-﻿using University.WPF.Services;
+﻿using System;
+using University.WPF.Services;
 using University.WPF.Services.Navigator;
 using University.WPF.ViewModel.Base;
 
@@ -25,7 +26,12 @@ class SectionBarViewModel : BaseViewModel
 
     public SectionBarViewModel(INavigator navigator)
     {
-        Navigator = navigator;
+        Navigator = navigator ?? throw new ArgumentNullException("navigator");
+        InitialCreateCommand();
+    }
+
+    private void InitialCreateCommand()
+    {
         OpenGroupView = new RelayCommand(o => { Navigator.NavigateTo<GroupViewModel>(); }, o => true);
         OpenHomeView = new RelayCommand(o => { Navigator.NavigateTo<HomeViewModel>(); }, o => true);
         OpenCourseView = new RelayCommand(o => { Navigator.NavigateTo<CourseViewModel>(); }, o => true);
