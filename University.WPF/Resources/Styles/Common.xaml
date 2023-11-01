@@ -12,8 +12,8 @@
     <SolidColorBrush x:Key="BrushPrimary2" 
                      Color="{StaticResource ColorPrimary2}"/>
     
-    <Image x:Key="ImageBrushArrowLeft" 
+    <Image x:Key="ImageArrowLeft" 
            Source="/Files/Images/arrowleft.png"/>
-    <Image x:Key="ImageBrushArrowRight" 
+    <Image x:Key="ImageArrowRight" 
            Source="/Files/Images/arrowright.png"/>
 </ResourceDictionary>

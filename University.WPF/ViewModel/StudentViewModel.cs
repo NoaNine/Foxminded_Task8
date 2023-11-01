@@ -10,6 +10,7 @@ namespace University.WPF.ViewModel;
 
 class StudentViewModel : BaseViewModel
 {
+    private Student _student;
     private IUnitOfWork _unitOfWork;
     private INavigator _navigator;
 
@@ -20,6 +21,15 @@ class StudentViewModel : BaseViewModel
         {
             _navigator = value;
             OnPropertyChanged();
+        }
+    }
+    public Student SelectedStudent 
+    { 
+        get => _student;
+        set
+        {
+            _student = value;
+            OnPropertyChanged("SelectedStudent");
         }
     }
     public RelayCommand OpenAddStudentView { get; private set; }
@@ -40,6 +50,7 @@ class StudentViewModel : BaseViewModel
         foreach (var student in Students)
         {
             student.Group = _unitOfWork.GetRepository<Group>().GetByID(student.GroupId);
+            student.Group.Course = _unitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
         }
     }
 }

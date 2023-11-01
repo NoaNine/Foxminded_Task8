@@ -11,6 +11,7 @@ namespace University.WPF.ViewModel;
 
 class GroupViewModel : BaseViewModel
 {
+    private Group _group;
     private IUnitOfWork _unitOfWork;
     private INavigator _navigator;
     public INavigator Navigator
@@ -20,6 +21,15 @@ class GroupViewModel : BaseViewModel
         {
             _navigator = value;
             OnPropertyChanged();
+        }
+    }
+    public Group SelectedGroup
+    {
+        get => _group;
+        set
+        {
+            _group = value;
+            OnPropertyChanged("SelectedGroup");
         }
     }
     public RelayCommand OpenCreateGroupView { get; private set; }
@@ -41,7 +51,7 @@ class GroupViewModel : BaseViewModel
         {
             group.Students = (ICollection<Student>)_unitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
             group.Course = _unitOfWork.GetRepository<Course>().GetByID(group.CourseId);
-            group.Tutor = _unitOfWork.GetRepository<Teacher>().GetByID(group.Id);
+            group.Tutor = _unitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO fix
         }
     }
 }

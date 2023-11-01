@@ -10,32 +10,25 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=GroupVM}">
     <Grid>
         <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"/>
-                <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TreeView Grid.Column="0" 
-                      x:Name="MainTreeView" 
-                      ItemsSource="{Binding Groups}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Students}" 
-                                              DataType="{x:Type m:Group}">
-                        <Label Content="{Binding Name}"/>
-                        <HierarchicalDataTemplate.ItemTemplate>
-                            <HierarchicalDataTemplate DataType="{x:Type m:Student}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding FirstName}"/>
-                                    <Label Content="{Binding LastName}"/>
-                                </StackPanel>
-                            </HierarchicalDataTemplate>
-                        </HierarchicalDataTemplate.ItemTemplate>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <ListView Grid.Row="0" 
+                      ItemsSource="{Binding Groups}"
+                      SelectedItem="{Binding SelectedGroup}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="First name" 
+                                        Width="auto" 
+                                        DisplayMemberBinding="{Binding Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -45,45 +38,33 @@
                 <Button Grid.Column="0"
                         Content="Create"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenCreateGroupView}"/>
+                        Command="{Binding OpenCreateGroupView}"/>
                 <Button Grid.Column="1"
                         Content="Edit"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenEditGroupView}"/>
+                        Command="{Binding OpenEditGroupView}"/>
                 <Button Grid.Column="2"
                         Content="Delete"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=DeleteGroup}"/>
+                        Command="{Binding DeleteGroup}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"
                     Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Group Name:"/>
-                <TextBlock Text="name"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Course:"/>
-                <TextBlock Text="name"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Amount student:"/>
-                <TextBlock Text="count"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Tutor:"/>
-                <TextBlock Text="firstName"
-                           Margin="10 0 2 0"/>
-                <TextBlock Text="lastName"
-                           Margin="2 0 10 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Width="150" 
-                        Content="Import or export students"/>
-            </StackPanel>
+            <TextBlock Text="Selected Group"/>
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding SelectedGroup.Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Tutor"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" 
+                         Text="{Binding SelectedGroup.Tutor.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" 
+                         Text="{Binding SelectedGroup.Tutor.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

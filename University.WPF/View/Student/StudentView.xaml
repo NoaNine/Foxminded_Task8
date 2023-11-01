@@ -14,10 +14,12 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding Path=Students}">
+            <ListView Grid.Row="0"
+                      ItemsSource="{Binding Students}"
+                      SelectedItem="{Binding SelectedStudent}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="First name" 
@@ -38,36 +40,24 @@
                 <Button Grid.Column="0"
                         Content="Add"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenAddStudentView}"/>
+                        Command="{Binding OpenAddStudentView}"/>
                 <Button Grid.Column="1"
                         Content="Edit"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenEditStudentView}"/>   
+                        Command="{Binding OpenEditStudentView}"/>
                 <Button Grid.Column="2"
                         Content="Delete"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=DeleteStudent}"/>
+                        Command="{Binding DeleteStudent}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"
                     Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Name:"/>
-                <TextBlock Text="firstName"
-                           Margin="10 0 2 0"/>
-                <TextBlock Text="lastName"
-                           Margin="2 0 10 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Group Name:"/>
-                <TextBlock Text="name"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Course name:"/>
-                <TextBlock Text="name"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
+            <TextBlock Text="Selected Student"/>
+            <TextBlock Text="First Name"/>
+            <TextBox Text="{Binding SelectedStudent.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Last Name"/>
+            <TextBox Text="{Binding SelectedStudent.LastName, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </Grid>
 </UserControl>

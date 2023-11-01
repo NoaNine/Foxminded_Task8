@@ -15,24 +15,20 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TreeView Grid.Column="0" 
-                      x:Name="MainTreeView" 
-                      ItemsSource="{Binding Courses}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Groups}" 
-                                              DataType="{x:Type m:Course}">
-                        <Label Content="{Binding Name}"/>
-                        <HierarchicalDataTemplate.ItemTemplate>
-                            <HierarchicalDataTemplate DataType="{x:Type m:Group}">
-                                <Label Content="{Binding Name}"/>
-                            </HierarchicalDataTemplate>
-                        </HierarchicalDataTemplate.ItemTemplate>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <ListView Grid.Row="0" 
+                      ItemsSource="{Binding Courses}"
+                      SelectedItem="{Binding SelectedCourse}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" 
+                                        Width="auto" 
+                                        DisplayMemberBinding="{Binding Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -42,36 +38,22 @@
                 <Button Grid.Column="0"
                         Content="Create"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenCreateCourseView}"/>
+                        Command="{Binding OpenCreateCourseView}"/>
                 <Button Grid.Column="1"
                         Content="Edit"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=OpenEditCourseView}"/>
+                        Command="{Binding OpenEditCourseView}"/>
                 <Button Grid.Column="2"
                         Content="Delete"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding Path=DeleteCourse}"/>
+                        Command="{Binding DeleteCourse}"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1"
                     Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Course Name:"/>
-                <TextBlock Text="name"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Amount group:"/>
-                <TextBlock Text="count"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Amount student:"/>
-                <TextBlock Text="count"
-                           Margin="10 0 0 0"/>
-            </StackPanel>
-            <TextBlock Text="Description:"/>
-            <TextBlock Text="text"/>
+            <TextBlock Text="Selected Course"/>
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding SelectedCourse.Name, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </Grid>
 </UserControl>

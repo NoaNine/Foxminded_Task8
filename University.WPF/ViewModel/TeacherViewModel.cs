@@ -10,6 +10,7 @@ namespace University.WPF.ViewModel;
 
 class TeacherViewModel : BaseViewModel
 {
+    private Teacher _teacher;
     private IUnitOfWork _unitOfWork;
     private INavigator _navigator;
     public INavigator Navigator
@@ -19,6 +20,15 @@ class TeacherViewModel : BaseViewModel
         {
             _navigator = value;
             OnPropertyChanged();
+        }
+    }
+    public Teacher SelectedTeacher
+    {
+        get => _teacher;
+        set
+        {
+            _teacher = value;
+            OnPropertyChanged("SelectedTeacher");
         }
     }
     public RelayCommand OpenAddTeacherView { get; private set; }

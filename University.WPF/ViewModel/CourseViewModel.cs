@@ -11,6 +11,7 @@ namespace University.WPF.ViewModel;
 
 class CourseViewModel : BaseViewModel
 {
+    private Course _course;
     private IUnitOfWork _unitOfWork;
     private INavigator _navigator;
     public INavigator Navigator
@@ -20,6 +21,15 @@ class CourseViewModel : BaseViewModel
         {
             _navigator = value;
             OnPropertyChanged();
+        }
+    }
+    public Course SelectedCourse
+    {
+        get => _course;
+        set
+        {
+            _course = value;
+            OnPropertyChanged("SelectedCourse");
         }
     }
     public RelayCommand OpenCreateCourseView { get; private set; }
