@@ -19,6 +19,20 @@ class StudentViewModel : BaseViewModel
             OnPropertyChanged("SelectedStudent");
         }
     }
+    private RelayCommand addCommand;
+    public RelayCommand AddCommand
+    {
+        get
+        {
+            return addCommand ??
+                (addCommand = new RelayCommand(obj =>
+                {
+                    Student student = new Student();
+                    Students.Insert(0, student);
+                    SelectedStudent = student;
+                }, o => true));
+        }
+    }
     public RelayCommand OpenAddStudentView { get; private set; }
     public RelayCommand OpenEditStudentView { get; private set; }
     public RelayCommand DeleteStudent { get; private set; }
