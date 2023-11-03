@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -11,18 +10,6 @@ namespace University.WPF.ViewModel;
 class StudentViewModel : BaseViewModel
 {
     private Student _student;
-    private IUnitOfWork _unitOfWork;
-    private INavigator _navigator;
-
-    public INavigator Navigator
-    {
-        get => _navigator;
-        private set
-        {
-            _navigator = value;
-            OnPropertyChanged();
-        }
-    }
     public Student SelectedStudent 
     { 
         get => _student;
@@ -37,20 +24,18 @@ class StudentViewModel : BaseViewModel
     public RelayCommand DeleteStudent { get; private set; }
     public ObservableCollection<Student> Students { get; private set; }
 
-    public StudentViewModel(IUnitOfWork unitOfWork, INavigator navigator)
+    public StudentViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        _unitOfWork = unitOfWork ?? throw new ArgumentNullException("unitOfWork");
-        Navigator = navigator ?? throw new ArgumentNullException("navigator");
         LoadData();
     }
 
     private void LoadData()
     {
-        Students = new ObservableCollection<Student>(_unitOfWork.GetRepository<Student>().GetAll());
+        Students = new ObservableCollection<Student>(UnitOfWork.GetRepository<Student>().GetAll());
         foreach (var student in Students)
         {
-            student.Group = _unitOfWork.GetRepository<Group>().GetByID(student.GroupId);
-            student.Group.Course = _unitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
+            student.Group = UnitOfWork.GetRepository<Group>().GetByID(student.GroupId);
+            student.Group.Course = UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
         }
     }
 }

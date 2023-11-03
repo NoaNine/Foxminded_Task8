@@ -1,4 +1,4 @@
-﻿using System;
+﻿using University.DAL.UnitOfWork;
 using University.WPF.Services.Navigator;
 using University.WPF.ViewModel.Base;
 
@@ -6,19 +6,8 @@ namespace University.WPF.ViewModel;
 
 public class MainWindowViewModel : BaseViewModel
 {
-    private INavigator _navigator;
-    public INavigator Navigator
+    public MainWindowViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        get => _navigator;
-        set
-        {
-            _navigator = value;
-            OnPropertyChanged();
-        }
-    }
 
-    public MainWindowViewModel(INavigator navigator)
-    {
-        Navigator = navigator ?? throw new ArgumentNullException("navigator");
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using University.DAL.UnitOfWork;
 using University.WPF.Services;
 using University.WPF.Services.Navigator;
 using University.WPF.ViewModel.Base;
@@ -7,26 +7,14 @@ namespace University.WPF.ViewModel;
 
 class SectionBarViewModel : BaseViewModel
 {
-    private INavigator _navigator;
-    public INavigator Navigator
-    {
-        get => _navigator;
-        private set
-        {
-            _navigator = value;
-            OnPropertyChanged();
-        }
-    }
-
     public RelayCommand OpenGroupView { get; private set; }
     public RelayCommand OpenHomeView { get; private set; }
     public RelayCommand OpenCourseView { get; private set; }
     public RelayCommand OpenStudentView { get; private set; }
     public RelayCommand OpenTeacherView { get; private set; }
 
-    public SectionBarViewModel(INavigator navigator)
+    public SectionBarViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        Navigator = navigator ?? throw new ArgumentNullException("navigator");
         InitialCreateCommand();
     }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
@@ -12,17 +11,6 @@ namespace University.WPF.ViewModel;
 class GroupViewModel : BaseViewModel
 {
     private Group _group;
-    private IUnitOfWork _unitOfWork;
-    private INavigator _navigator;
-    public INavigator Navigator
-    {
-        get => _navigator;
-        private set
-        {
-            _navigator = value;
-            OnPropertyChanged();
-        }
-    }
     public Group SelectedGroup
     {
         get => _group;
@@ -37,21 +25,19 @@ class GroupViewModel : BaseViewModel
     public RelayCommand DeleteGroup { get; private set; }
     public ObservableCollection<Group> Groups { get; private set; }
 
-    public GroupViewModel(IUnitOfWork unitOfWork, INavigator navigator)
+    public GroupViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        _unitOfWork = unitOfWork ?? throw new ArgumentNullException("unitOfWork");
-        Navigator = navigator ?? throw new ArgumentNullException("navigator");
         LoadData();
     }
 
     private void LoadData()
     {
-        Groups = new ObservableCollection<Group>(_unitOfWork.GetRepository<Group>().GetAll());
+        Groups = new ObservableCollection<Group>(UnitOfWork.GetRepository<Group>().GetAll());
         foreach (var group in Groups)
         {
-            group.Students = (ICollection<Student>)_unitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
-            group.Course = _unitOfWork.GetRepository<Course>().GetByID(group.CourseId);
-            group.Tutor = _unitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO fix
+            group.Students = (ICollection<Student>)UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
+            group.Course = UnitOfWork.GetRepository<Course>().GetByID(group.CourseId);
+            group.Tutor = UnitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO fix
         }
     }
 }
