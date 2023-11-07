@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -9,23 +10,23 @@ namespace University.WPF.ViewModel;
 
 class StudentViewModel : BaseViewModel
 {
-    private Student _student;
+    private Student _selectedStudent;
     public Student SelectedStudent 
     { 
-        get => _student;
+        get => _selectedStudent;
         set
         {
-            _student = value;
+            _selectedStudent = value;
             OnPropertyChanged("SelectedStudent");
         }
     }
-    private RelayCommand addCommand;
-    public RelayCommand AddCommand
+    private RelayCommand _addStudentCommand;
+    public RelayCommand AddStudentCommand
     {
         get
         {
-            return addCommand ??
-                (addCommand = new RelayCommand(obj =>
+            return _addStudentCommand ??
+                (_addStudentCommand = new RelayCommand(obj =>
                 {
                     Student student = new Student();
                     Students.Insert(0, student);
@@ -33,9 +34,33 @@ class StudentViewModel : BaseViewModel
                 }, o => true));
         }
     }
-    public RelayCommand OpenAddStudentView { get; private set; }
-    public RelayCommand OpenEditStudentView { get; private set; }
-    public RelayCommand DeleteStudent { get; private set; }
+    private RelayCommand _editStudentCommand;
+    public RelayCommand EditStudentCommand
+    {
+        get
+        {
+            return _editStudentCommand ??
+                (_editStudentCommand = new RelayCommand(obj =>
+                {
+
+                }, o => true));
+        }
+    }
+    private RelayCommand _deleteStudentCommand;
+    public RelayCommand DeleteStudentCommand
+    {
+        get
+        {
+            return _deleteStudentCommand ??
+                (_deleteStudentCommand = new RelayCommand(obj =>
+                {
+                    Student selectedStudent = obj as Student ?? throw new ArgumentNullException(nameof(obj));
+                    Students.Remove(selectedStudent);
+                },
+                obj =>  Students.Count > 0));
+        }
+    }
+
     public ObservableCollection<Student> Students { get; private set; }
 
     public StudentViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
