@@ -10,7 +10,7 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=HomeVM}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TreeView Grid.Column="0" 
@@ -21,14 +21,28 @@
                                           DataType="{x:Type m:Course}">
                     <Label Content="{Binding Name}"/>
                     <HierarchicalDataTemplate.ItemTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type m:Group}">
+                        <HierarchicalDataTemplate ItemsSource="{Binding Students}" DataType="{x:Type m:Group}">
                             <Label Content="{Binding Name}"/>
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <DataTemplate DataType="{x:Type m:Student}">
+                                    <Label>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="FirstName" />
+                                                    <Binding Path="LastName" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </Label>
+                                </DataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
                         </HierarchicalDataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <StackPanel Grid.Column="1"
+        <!--<StackPanel Grid.Column="1"
                         Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Tutor:"/>
@@ -49,6 +63,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </UserControl>
