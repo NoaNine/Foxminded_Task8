@@ -20,13 +20,7 @@ public class RelayCommand : ICommand
         _canExecute = canExecute ?? throw new ArgumentNullException("canExecute");
     }
 
-    public bool CanExecute(object parameter)
-    {
-        return _canExecute(parameter);
-    }
+    public bool CanExecute(object parameter) => _canExecute(parameter);
 
-    public void Execute(object parameter)
-    {
-        _execute(parameter);
-    }
+    public void Execute(object parameter) => _execute(parameter);
 }
