@@ -7,10 +7,10 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{Binding Source={StaticResource Locator}, Path=StudentVM}">
+             >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
