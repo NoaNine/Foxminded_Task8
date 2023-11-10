@@ -37,6 +37,7 @@ class StudentViewModel : BaseViewModel
             student.Group = UnitOfWork.GetRepository<Group>().GetByID(student.GroupId);
             student.Group.Course = UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
         }
+        OnPropertyChanged("Students");
     }
 
     #endregion
