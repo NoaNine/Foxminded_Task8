@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
@@ -21,6 +20,7 @@ class StudentViewModel : BaseViewModel
             OnPropertyChanged("SelectedStudent");
         }
     }
+    public ObservableCollection<Student> Students { get; set; }
 
     #region Command LoadDataCommand
 
@@ -79,29 +79,21 @@ class StudentViewModel : BaseViewModel
     private ICommand _deleteStudentCommand;
     public ICommand DeleteStudentCommand =>
         _deleteStudentCommand ??= new RelayCommand(OnDeleteStudentCommandExecuted, CanDeleteStudentCommandExecute);
-    private bool CanDeleteStudentCommandExecute(object o) => true;
+
+    private bool CanDeleteStudentCommandExecute(object o) => 
+        o is Student student 
+        && Students.Count > 0 
+        && Students.Contains(student);
 
     private void OnDeleteStudentCommandExecuted(object o)
     {
-        
+        Students.Remove((Student)o);
     }
 
     #endregion
 
-    public ObservableCollection<Student> Students { get; set; }
-
     public StudentViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        //LoadData();
+        
     }
-
-    //private void LoadData()
-    //{
-    //    Students = new ObservableCollection<Student>(UnitOfWork.GetRepository<Student>().GetAll());
-    //    foreach (var student in Students)
-    //    {
-    //        student.Group = UnitOfWork.GetRepository<Group>().GetByID(student.GroupId);
-    //        student.Group.Course = UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
-    //    }
-    //}
 }

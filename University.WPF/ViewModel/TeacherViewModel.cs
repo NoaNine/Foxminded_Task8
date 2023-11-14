@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -19,22 +21,78 @@ class TeacherViewModel : BaseViewModel
             OnPropertyChanged("SelectedTeacher");
         }
     }
-    public RelayCommand OpenAddTeacherView { get; private set; }
-    public RelayCommand OpenEditTeacherView { get; private set; }
-    public RelayCommand DeleteTeacher { get; private set; }
     public ObservableCollection<Teacher> Teachers { get; private set; }
 
-    public TeacherViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
-    {
-        LoadData();
-    }
+    #region Command LoadDataCommand
 
-    private void LoadData()
+    private ICommand _loadDataCommand;
+    public ICommand LoadDataCommand =>
+        _loadDataCommand ??= new RelayCommand(OnLoadDataCommandExecuted, CanLoadDataCommandExecute);
+
+    private bool CanLoadDataCommandExecute(object o) => true;
+
+    private void OnLoadDataCommandExecuted(object o)
     {
         Teachers = new ObservableCollection<Teacher>(UnitOfWork.GetRepository<Teacher>().GetAll());
         foreach (var teacher in Teachers)
         {
             teacher.Group = UnitOfWork.GetRepository<Group>().GetByID(teacher.GroupId);
-        }    
+        }
+        OnPropertyChanged("Teachers");
+    }
+
+    #endregion
+
+    #region Command AddTeacherCommand
+
+    private ICommand _addTeacherCommand;
+    public ICommand AddTeacherCommand =>
+        _addTeacherCommand ??= new RelayCommand(OnAddTeacherCommandExecuted, CanAddTeacherCommandExecute);
+
+    private bool CanAddTeacherCommandExecute(object o) => true;
+
+    private void OnAddTeacherCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command EditTeacherCommand
+
+    private ICommand _editTeacherCommand;
+    public ICommand EditStudentCommand =>
+        _editTeacherCommand ??= new RelayCommand(OnEditTeacherCommandExecuted, CanEditTeacherCommandExecute);
+
+    private bool CanEditTeacherCommandExecute(object o) => true;
+
+    private void OnEditTeacherCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command DeleteTeacherCommand
+
+    private ICommand _deleteTeacherCommand;
+    public ICommand DeleteTeacherCommand =>
+        _deleteTeacherCommand ??= new RelayCommand(OnDeleteTeacherCommandExecuted, CanDeleteTeacherCommandExecute);
+
+    private bool CanDeleteTeacherCommandExecute(object o) =>
+        o is Teacher teacher
+        && Teachers.Count > 0
+        && Teachers.Contains(teacher);
+
+    private void OnDeleteTeacherCommandExecuted(object o)
+    {
+        Teachers.Remove((Teacher)o);
+    }
+
+    #endregion
+
+    public TeacherViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+    {
+
     }
 }

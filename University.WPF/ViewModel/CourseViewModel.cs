@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -20,17 +21,17 @@ class CourseViewModel : BaseViewModel
             OnPropertyChanged("SelectedCourse");
         }
     }
-    public RelayCommand OpenCreateCourseView { get; private set; }
-    public RelayCommand OpenEditCourseView { get; private set; }
-    public RelayCommand DeleteCourse { get; private set; }
     public ObservableCollection<Course> Courses { get; private set; }
 
-    public CourseViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
-    {
-        LoadData();
-    }
+    #region Command LoadDataCommand
 
-    private void LoadData()
+    private ICommand _loadDataCommand;
+    public ICommand LoadDataCommand =>
+        _loadDataCommand ??= new RelayCommand(OnLoadDataCommandExecuted, CanLoadDataCommandExecute);
+
+    private bool CanLoadDataCommandExecute(object o) => true;
+
+    private void OnLoadDataCommandExecuted(object o)
     {
         Courses = new ObservableCollection<Course>(UnitOfWork.GetRepository<Course>().GetAll());
         foreach (var course in Courses)
@@ -41,5 +42,62 @@ class CourseViewModel : BaseViewModel
                 group.Students = (ICollection<Student>)UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
             }
         }
+        OnPropertyChanged("Courses");
+    }
+
+    #endregion
+
+    #region Command AddCourseCommand
+
+    private ICommand _addCourseCommand;
+    public ICommand AddCourseCommand =>
+        _addCourseCommand ??= new RelayCommand(OnAddCourseCommandExecuted, CanAddCourseCommandExecute);
+
+    private bool CanAddCourseCommandExecute(object o) => true;
+
+    private void OnAddCourseCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command EditCourseCommand
+
+    private ICommand _editCourseCommand;
+    public ICommand EditCourseCommand =>
+        _editCourseCommand ??= new RelayCommand(OnEditCourseCommandExecuted, CanEditCourseCommandExecute);
+
+    private bool CanEditCourseCommandExecute(object o) => true;
+
+    private void OnEditCourseCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command DeleteCourseCommand
+
+    private ICommand _deleteCourseCommand;
+    public ICommand DeleteCourseCommand =>
+        _deleteCourseCommand ??= new RelayCommand(OnDeleteCourseCommandExecuted, CanDeleteCourseCommandExecute);
+
+    private bool CanDeleteCourseCommandExecute(object o) =>
+        o is Course course
+        && Courses.Count > 0
+        && Courses.Contains(course)
+        && course.Groups.Count > 0; //TODO fix
+
+    private void OnDeleteCourseCommandExecuted(object o)
+    {
+        Courses.Remove((Course)o);
+    }
+
+    #endregion
+
+    public CourseViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+    {
+
     }
 }

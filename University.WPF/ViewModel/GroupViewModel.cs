@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Services;
@@ -20,17 +21,17 @@ class GroupViewModel : BaseViewModel
             OnPropertyChanged("SelectedGroup");
         }
     }
-    public RelayCommand OpenCreateGroupView { get; private set; }
-    public RelayCommand OpenEditGroupView { get; private set; }
-    public RelayCommand DeleteGroup { get; private set; }
     public ObservableCollection<Group> Groups { get; private set; }
 
-    public GroupViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
-    {
-        LoadData();
-    }
+    #region Command LoadDataCommand
 
-    private void LoadData()
+    private ICommand _loadDataCommand;
+    public ICommand LoadDataCommand =>
+        _loadDataCommand ??= new RelayCommand(OnLoadDataCommandExecuted, CanLoadDataCommandExecute);
+
+    private bool CanLoadDataCommandExecute(object o) => true;
+
+    private void OnLoadDataCommandExecuted(object o)
     {
         Groups = new ObservableCollection<Group>(UnitOfWork.GetRepository<Group>().GetAll());
         foreach (var group in Groups)
@@ -39,5 +40,61 @@ class GroupViewModel : BaseViewModel
             group.Course = UnitOfWork.GetRepository<Course>().GetByID(group.CourseId);
             group.Tutor = UnitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO fix
         }
+        OnPropertyChanged("Groups");
+    }
+
+    #endregion
+
+    #region Command AddGroupCommand
+
+    private ICommand _addGroupCommand;
+    public ICommand AddGroupCommand =>
+        _addGroupCommand ??= new RelayCommand(OnAddGroupCommandExecuted, CanAddGroupCommandExecute);
+
+    private bool CanAddGroupCommandExecute(object o) => true;
+
+    private void OnAddGroupCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command EditGroupCommand
+
+    private ICommand _editGroupCommand;
+    public ICommand EditGroupCommand =>
+        _editGroupCommand ??= new RelayCommand(OnEditGroupCommandExecuted, CanEditGroupCommandExecute);
+
+    private bool CanEditGroupCommandExecute(object o) => true;
+
+    private void OnEditGroupCommandExecuted(object o)
+    {
+
+    }
+
+    #endregion
+
+    #region Command DeleteGroupCommand
+
+    private ICommand _deleteGroupCommand;
+    public ICommand DeleteGroupCommand =>
+        _deleteGroupCommand ??= new RelayCommand(OnDeleteGroupCommandExecuted, CanDeleteGroupCommandExecute);
+    private bool CanDeleteGroupCommandExecute(object o) =>
+        o is Group group
+        && Groups.Count > 0
+        && Groups.Contains(group)
+        && group.Students.Count > 0; //TODO fix
+
+    private void OnDeleteGroupCommandExecuted(object o)
+    {
+        Groups.Remove((Group)o);
+    }
+
+    #endregion
+
+    public GroupViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+    {
+
     }
 }
