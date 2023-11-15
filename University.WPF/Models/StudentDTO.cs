@@ -1,15 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using University.WPF.Models.Base;
+﻿using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
     internal class StudentDTO : PersonBaseModelDTO
     {
-        public int GroupId { get; set; }
-        public GroupDTO Group { get; set; }
+        private int _groupId;
+        private GroupDTO _group;
+        public int GroupId 
+        { 
+            get => _groupId;
+            set
+            {
+                _groupId = value;
+                OnPropertyChanged();
+            }
+        }
+        public GroupDTO Group
+        {
+            get => _group;
+            set
+            {
+                _group = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

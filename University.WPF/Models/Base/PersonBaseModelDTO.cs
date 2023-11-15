@@ -1,14 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace University.WPF.Models.Base
+﻿namespace University.WPF.Models.Base
 {
     internal class PersonBaseModelDTO : BaseModelDTO
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        private string _firstName;
+        private string _lastName;
+        public string FirstName 
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string LastName 
+        {
+            get => _lastName;
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

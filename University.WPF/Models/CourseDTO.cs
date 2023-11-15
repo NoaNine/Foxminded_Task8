@@ -1,17 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
     internal class CourseDTO : BaseModelDTO
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        private string _name;
+        private string _description;
+        public string Name 
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Description 
+        { 
+            get => _description;
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public virtual ObservableCollection<GroupDTO> Groups { get; set; }
+        public ObservableCollection<GroupDTO> Groups { get; set; }
     }
 }
