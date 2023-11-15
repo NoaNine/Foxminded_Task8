@@ -7,8 +7,11 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class CourseDTO : BaseModel
+    internal class CourseDTO : BaseModelDTO
     {
+        public string Name { get; set; }
+        public string Description { get; set; }
 
+        public virtual ObservableCollection<GroupDTO> Groups { get; set; }
     }
 }

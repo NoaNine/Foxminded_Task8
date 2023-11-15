@@ -9,6 +9,6 @@ namespace University.WPF.Models.Base
 {
     internal class BaseModelDTO : ObservableObject
     {
-
+        public int Id { get; set; }
     }
 }

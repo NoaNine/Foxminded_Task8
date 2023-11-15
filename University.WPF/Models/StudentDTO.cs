@@ -7,8 +7,9 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class StudentDTO : PersonBaseModel
+    internal class StudentDTO : PersonBaseModelDTO
     {
-
+        public int GroupId { get; set; }
+        public GroupDTO Group { get; set; }
     }
 }

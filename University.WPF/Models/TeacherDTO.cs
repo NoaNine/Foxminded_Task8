@@ -9,6 +9,7 @@ namespace University.WPF.Models
 {
     internal class TeacherDTO : PersonBaseDTO
     {
-
+        public int? GroupId { get; set; }
+        public GroupDTO? Group { get; set; }
     }
 }
