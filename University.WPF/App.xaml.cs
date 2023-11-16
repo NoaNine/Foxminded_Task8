@@ -47,7 +47,6 @@ public partial class App : Application
         services.AddScoped<MainWindowViewModel>();
         services.AddScoped<GroupViewModel>();
         services.AddScoped<SectionBarViewModel>();
-        services.AddScoped<BreadcrumbBarViewModel>();
         services.AddScoped<CourseViewModel>();
         services.AddScoped<HomeViewModel>();
         services.AddScoped<StudentViewModel>();

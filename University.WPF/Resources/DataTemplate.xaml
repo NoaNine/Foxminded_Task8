@@ -11,9 +11,6 @@
     <DataTemplate DataType="{x:Type TypeName=viewModel:SectionBarViewModel}">
         <controls:SectionBar/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type TypeName=viewModel:BreadcrumbBarViewModel}">
-        <controls:BreadcrumbBar/>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type TypeName=viewModel:HomeViewModel}">
         <viewHome:HomeView/>
     </DataTemplate>
