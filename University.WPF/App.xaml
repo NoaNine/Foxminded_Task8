@@ -12,6 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Common.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/RadioButton.xaml"/>
                 <ResourceDictionary Source="Resources/DataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

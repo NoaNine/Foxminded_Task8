@@ -1,16 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="ColorPrimary1">
+    <Color x:Key="Turquoise">
         #81d6c1
     </Color>
-    <Color x:Key="ColorPrimary2">
+    <Color x:Key="DarkTurquoise">
         #419297
-    </Color> 
+    </Color>
 
-    <SolidColorBrush x:Key="BrushPrimary1" 
-                     Color="{StaticResource ColorPrimary1}"/>
-    <SolidColorBrush x:Key="BrushPrimary2" 
-                     Color="{StaticResource ColorPrimary2}"/>
+    <SolidColorBrush x:Key="TurquoiseBrush" 
+                     Color="{StaticResource Turquoise}"/>
+    <SolidColorBrush x:Key="DarkTurquoiseBrush" 
+                     Color="{StaticResource DarkTurquoise}"/>
     
     <Image x:Key="ImageArrowLeft" 
            Source="/Files/Images/arrowleft.png"/>

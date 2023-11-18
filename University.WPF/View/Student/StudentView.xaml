@@ -45,17 +45,18 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource ListViewButtonStyle}"/>
+                </Grid.Resources>
                 <Button Grid.Column="0"
                         Content="Add"
-                        HorizontalAlignment="Stretch"
                         Command="{Binding OpenAddStudentViewCommand}"/>
                 <Button Grid.Column="1"
                         Content="Edit"
-                        HorizontalAlignment="Stretch"
                         Command="{Binding OpenEditStudentViewCommand}"/>
                 <Button Grid.Column="2"
                         Content="Delete"
-                        HorizontalAlignment="Stretch"
                         Command="{Binding DeleteStudentCommand}"
                         CommandParameter="{Binding SelectedStudent}"/>
             </Grid>
