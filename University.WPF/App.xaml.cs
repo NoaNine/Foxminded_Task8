@@ -35,11 +35,11 @@ public partial class App : Application
         ServiceProvider = host.Services;
     }
 
-    private void ConfigureServices(IConfiguration configuration,
+    private static void ConfigureServices(IConfiguration configuration,
         IServiceCollection services)
     {
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddSingleton<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<INavigator, Navigator>();
         services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
@@ -51,6 +51,7 @@ public partial class App : Application
         services.AddScoped<HomeViewModel>();
         services.AddScoped<StudentViewModel>();
         services.AddScoped<TeacherViewModel>();
+        services.AddScoped<EditStudentViewModel>();
 
         services.AddScoped<MainWindow>();
     }

@@ -69,7 +69,7 @@ class StudentViewModel : BaseViewModel
 
     private void OnEditStudentCommandExecuted(object o)
     {
-
+        Navigator.NavigateTo<EditStudentViewModel>();
     }
 
     #endregion
