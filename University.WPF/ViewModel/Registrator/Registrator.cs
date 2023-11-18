@@ -13,6 +13,7 @@ namespace University.WPF.ViewModel.Registrator
             services.AddScoped<HomeViewModel>();
             services.AddScoped<StudentViewModel>();
             services.AddScoped<TeacherViewModel>();
+            services.AddScoped<AddStudentViewModel>();
             services.AddScoped<EditStudentViewModel>();
             return services;
         }

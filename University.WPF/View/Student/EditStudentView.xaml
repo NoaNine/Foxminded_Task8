@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:University.WPF.View.Student"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             >
+             DataContext="{Binding Source={StaticResource Locator}, Path=EditStudentVM}">
     <Grid>
         <TextBlock Text="Hello"/>
     </Grid>

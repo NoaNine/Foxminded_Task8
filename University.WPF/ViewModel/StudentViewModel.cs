@@ -42,35 +42,27 @@ class StudentViewModel : BaseViewModel
 
     #endregion
 
-    #region Command AddStudentCommand
+    #region Command OpenAddStudentViewCommand
 
-    private ICommand _addStudentCommand;
-    public ICommand AddStudentCommand => 
-        _addStudentCommand ??= new RelayCommand(OnAddStudentCommandExecuted, CanAddStudentCommandExecute);
+    private ICommand _openAddStudentViewCommand;
+    public ICommand OpenAddStudentViewCommand => 
+        _openAddStudentViewCommand ??= new RelayCommand(OnOpenAddStudentViewCommandExecuted, CanOpenAddStudentViewCommandExecute);
 
-    private bool CanAddStudentCommandExecute(object o) => true;
+    private bool CanOpenAddStudentViewCommandExecute(object o) => true;
 
-    private void OnAddStudentCommandExecuted(object o)
-    {
-        Student student = new Student();
-        Students.Insert(0, student);
-        SelectedStudent = student;
-    }
+    private void OnOpenAddStudentViewCommandExecuted(object o) => Navigator.NavigateTo<AddStudentViewModel>();
 
     #endregion
 
-    #region Command EditStudentCommand
+    #region Command OpenEditStudentViewCommand
 
-    private ICommand _editStudentCommand;
-    public ICommand EditStudentCommand =>
-        _editStudentCommand ??= new RelayCommand(OnEditStudentCommandExecuted, CanEditStudentCommandExecute);
+    private ICommand _openEditStudentViewCommand;
+    public ICommand OpenEditStudentViewCommand =>
+        _openEditStudentViewCommand ??= new RelayCommand(OnOpenEditStudentViewCommandExecuted, CanOpenEditStudentViewCommandExecute);
 
-    private bool CanEditStudentCommandExecute(object o) => true;
+    private bool CanOpenEditStudentViewCommandExecute(object o) => true;
 
-    private void OnEditStudentCommandExecuted(object o)
-    {
-        Navigator.NavigateTo<EditStudentViewModel>();
-    }
+    private void OnOpenEditStudentViewCommandExecuted(object o) => Navigator.NavigateTo<EditStudentViewModel>();
 
     #endregion
 

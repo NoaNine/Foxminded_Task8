@@ -48,11 +48,11 @@
                 <Button Grid.Column="0"
                         Content="Add"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding AddStudentCommand}"/>
+                        Command="{Binding OpenAddStudentViewCommand}"/>
                 <Button Grid.Column="1"
                         Content="Edit"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding EditStudentCommand}"/>
+                        Command="{Binding OpenEditStudentViewCommand}"/>
                 <Button Grid.Column="2"
                         Content="Delete"
                         HorizontalAlignment="Stretch"

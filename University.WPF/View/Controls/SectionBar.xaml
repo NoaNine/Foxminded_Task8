@@ -35,19 +35,19 @@
             </Grid.ColumnDefinitions>
             <RadioButton Grid.Column="0"
                          Content="Home"
-                         Command="{Binding OpenHomeView}"/>
+                         Command="{Binding OpenHomeViewCommand}"/>
             <RadioButton Grid.Column="1"
                          Content="Course"
-                         Command="{Binding OpenCourseView}"/>
+                         Command="{Binding OpenCourseViewCommand}"/>
             <RadioButton Grid.Column="2"
                          Content="Group"
-                         Command="{Binding OpenGroupView}"/>
+                         Command="{Binding OpenGroupViewCommand}"/>
             <RadioButton Grid.Column="3" 
                          Content="Student"
-                         Command="{Binding OpenStudentView}"/>
+                         Command="{Binding OpenStudentViewCommand}"/>
             <RadioButton Grid.Column="4" 
                          Content="Teacher"
-                         Command="{Binding OpenTeacherView}"/>
+                         Command="{Binding OpenTeacherViewCommand}"/>
         </Grid>
     </Grid>
 </UserControl>

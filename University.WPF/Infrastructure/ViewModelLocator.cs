@@ -13,5 +13,6 @@ internal class ViewModelLocator
     public BaseViewModel CourseVM => App.ServiceProvider.GetRequiredService<CourseViewModel>();
     public BaseViewModel TeacherVM => App.ServiceProvider.GetRequiredService<TeacherViewModel>();
     public BaseViewModel HomeVM => App.ServiceProvider.GetRequiredService<HomeViewModel>();
+    public BaseViewModel AddStudentVM => App.ServiceProvider.GetRequiredService<AddStudentViewModel>();
     public BaseViewModel EditStudentVM => App.ServiceProvider.GetRequiredService<EditStudentViewModel>();
 }
