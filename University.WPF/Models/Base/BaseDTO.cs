@@ -1,8 +1,8 @@
-﻿using University.WPF.Services;
+﻿using University.WPF.Infrastructure;
 
 namespace University.WPF.Models.Base
 {
-    internal class BaseModelDTO : ObservableObject
+    internal class BaseDTO : ObservableObject
     {
         private int _id;
         public int Id 

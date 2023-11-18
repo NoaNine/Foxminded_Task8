@@ -3,7 +3,7 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class CourseDTO : BaseModelDTO
+    internal class CourseDTO : BaseDTO
     {
         private string _name;
         private string _description;

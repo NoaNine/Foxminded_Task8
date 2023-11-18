@@ -1,6 +1,6 @@
 ﻿namespace University.WPF.Models.Base
 {
-    internal class PersonBaseModelDTO : BaseModelDTO
+    internal class PersonBaseDTO : BaseDTO
     {
         private string _firstName;
         private string _lastName;

@@ -8,9 +8,9 @@ using Microsoft.Extensions.Hosting;
 using University.DAL;
 using University.DAL.UnitOfWork;
 using University.WPF.ViewModel.Base;
-using University.WPF.Services.Navigator;
 using University.WPF.ViewModel;
 using University.WPF.View;
+using University.WPF.Infrastructure.Navigator;
 
 namespace University.WPF;
 

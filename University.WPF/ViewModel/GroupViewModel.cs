@@ -3,8 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
-using University.WPF.Services;
-using University.WPF.Services.Navigator;
+using University.WPF.Infrastructure.Navigator;
+using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
 
 namespace University.WPF.ViewModel;

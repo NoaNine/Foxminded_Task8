@@ -2,7 +2,7 @@
 using University.WPF.ViewModel;
 using University.WPF.ViewModel.Base;
 
-namespace University.WPF.Services;
+namespace University.WPF.Infrastructure;
 
 internal class ViewModelLocator
 {

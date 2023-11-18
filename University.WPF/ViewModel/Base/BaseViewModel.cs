@@ -1,7 +1,7 @@
 ﻿using System;
 using University.DAL.UnitOfWork;
-using University.WPF.Services;
-using University.WPF.Services.Navigator;
+using University.WPF.Infrastructure;
+using University.WPF.Infrastructure.Navigator;
 
 namespace University.WPF.ViewModel.Base;
 

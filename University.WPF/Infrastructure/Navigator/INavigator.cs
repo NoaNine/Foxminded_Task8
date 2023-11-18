@@ -1,6 +1,6 @@
 ﻿using University.WPF.ViewModel.Base;
 
-namespace University.WPF.Services.Navigator;
+namespace University.WPF.Infrastructure.Navigator;
 
 public interface INavigator
 {

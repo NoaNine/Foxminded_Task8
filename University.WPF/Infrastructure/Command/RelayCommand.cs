@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using System;
 
-namespace University.WPF.Services;
+namespace University.WPF.Infrastructure.Command;
 
 public class RelayCommand : ICommand
 {
@@ -10,8 +10,8 @@ public class RelayCommand : ICommand
 
     public event EventHandler CanExecuteChanged
     {
-        add => CommandManager.RequerySuggested += value; 
-        remove => CommandManager.RequerySuggested -= value; 
+        add => CommandManager.RequerySuggested += value;
+        remove => CommandManager.RequerySuggested -= value;
     }
 
     public RelayCommand(Action<object> execute, Predicate<object> canExecute)

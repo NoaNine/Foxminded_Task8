@@ -2,7 +2,7 @@
 
 namespace University.WPF.Models
 {
-    internal class TeacherDTO : PersonBaseModelDTO
+    internal class TeacherDTO : PersonBaseDTO
     {
         private int? _groupId;
         private GroupDTO? _group;

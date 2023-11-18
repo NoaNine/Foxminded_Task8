@@ -1,7 +1,7 @@
 ﻿using System;
 using University.WPF.ViewModel.Base;
 
-namespace University.WPF.Services.Navigator;
+namespace University.WPF.Infrastructure.Navigator;
 
 public class Navigator : ObservableObject, INavigator
 {
@@ -9,7 +9,7 @@ public class Navigator : ObservableObject, INavigator
     private BaseViewModel _currentView;
 
     public BaseViewModel GetCurrentView
-    { 
+    {
         get => _currentView;
         private set
         {
@@ -23,7 +23,7 @@ public class Navigator : ObservableObject, INavigator
         _viewModelFactory = viewModelFactory ?? throw new ArgumentNullException(nameof(viewModelFactory));
     }
 
-    public void NavigateTo<T>() where T : BaseViewModel 
+    public void NavigateTo<T>() where T : BaseViewModel
     {
         BaseViewModel viewModelBase = _viewModelFactory.Invoke(typeof(T));
         GetCurrentView = viewModelBase;
