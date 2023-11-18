@@ -8,9 +8,9 @@ using Microsoft.Extensions.Hosting;
 using University.DAL;
 using University.DAL.UnitOfWork;
 using University.WPF.ViewModel.Base;
-using University.WPF.ViewModel;
 using University.WPF.View;
 using University.WPF.Infrastructure.Navigator;
+using University.WPF.ViewModel.Registrator;
 
 namespace University.WPF;
 
@@ -40,19 +40,9 @@ public partial class App : Application
     {
         services.AddDbContext<UniversityContext>(o => o.UseSqlServer(configuration.GetConnectionString("UniversityDatabase")));
         services.AddSingleton<IUnitOfWork, UnitOfWork>();
-
         services.AddScoped<INavigator, Navigator>();
         services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
-
-        services.AddScoped<MainWindowViewModel>();
-        services.AddScoped<GroupViewModel>();
-        services.AddScoped<SectionBarViewModel>();
-        services.AddScoped<CourseViewModel>();
-        services.AddScoped<HomeViewModel>();
-        services.AddScoped<StudentViewModel>();
-        services.AddScoped<TeacherViewModel>();
-        services.AddScoped<EditStudentViewModel>();
-
+        services.AddAllViewModels();
         services.AddScoped<MainWindow>();
     }
 
