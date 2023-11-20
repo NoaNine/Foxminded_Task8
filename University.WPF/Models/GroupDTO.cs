@@ -3,12 +3,12 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class GroupModel : BaseModel
+    internal class GroupDTO : BaseDTO
     {
         private string _name;
         private string _courseId;
-        private CourseModel _course;
-        private TeacherModel? _tutor;
+        private CourseDTO _course;
+        private TeacherDTO? _tutor;
         public string Name
         {
             get => _name;
@@ -27,7 +27,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public CourseModel Course
+        public CourseDTO Course
         {
             get => _course;
             set
@@ -36,7 +36,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public TeacherModel Tutor
+        public TeacherDTO Tutor
         {
             get => _tutor;
             set
@@ -45,6 +45,6 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<StudentModel> Students { get; set; }
+        public ObservableCollection<StudentDTO> Students { get; set; }
     }
 }
