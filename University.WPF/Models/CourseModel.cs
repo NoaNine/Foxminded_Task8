@@ -3,7 +3,7 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class CourseDTO : BaseDTO
+    internal class CourseModel : BaseModel
     {
         private string _name;
         private string _description;
@@ -26,6 +26,6 @@ namespace University.WPF.Models
             }
         }
 
-        public ObservableCollection<GroupDTO> Groups { get; set; }
+        public ObservableCollection<GroupModel> Groups { get; set; }
     }
 }
