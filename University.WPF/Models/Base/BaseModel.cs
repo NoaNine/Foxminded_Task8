@@ -2,7 +2,7 @@
 
 namespace University.WPF.Models.Base
 {
-    internal class BaseDTO : ObservableObject
+    internal class BaseModel : ObservableObject
     {
         private int _id;
         public int Id 

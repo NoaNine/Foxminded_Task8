@@ -2,10 +2,10 @@
 
 namespace University.WPF.Models
 {
-    internal class TeacherDTO : PersonBaseDTO
+    internal class TeacherModel : PersonBaseModel
     {
         private int? _groupId;
-        private GroupDTO? _group;
+        private GroupModel? _group;
         public int? GroupId
         {
             get => _groupId;
@@ -15,7 +15,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public GroupDTO Group
+        public GroupModel Group
         {
             get => _group;
             set
