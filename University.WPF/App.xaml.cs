@@ -46,7 +46,7 @@ public partial class App : Application
         services.AddScoped<MainWindow>();
     }
 
-    protected override async void OnStartup(StartupEventArgs e)
+    protected override async void OnStartup(StartupEventArgs e) //TODO Need add async await to all code
     {
         base.OnStartup(e);
 

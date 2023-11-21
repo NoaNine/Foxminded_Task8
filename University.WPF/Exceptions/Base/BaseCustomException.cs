@@ -3,7 +3,7 @@
 namespace University.WPF.Exceptions.Base
 {
     [Serializable]
-    abstract class BaseCustomException : Exception
+    abstract class BaseCustomException : Exception //TODO Need to add custom exceptions and integrate them into the code
     {
         public BaseCustomException() { }
 
