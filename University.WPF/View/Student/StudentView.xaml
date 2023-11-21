@@ -63,10 +63,59 @@
         </Grid>
         <StackPanel Grid.Column="1"
                     Orientation="Vertical">
-            <TextBlock Text="First Name"/>
-            <TextBox Text="{Binding SelectedStudent.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Text="Last Name"/>
-            <TextBox Text="{Binding SelectedStudent.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Id:"
+                           Margin="0,0,3,0"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding SelectedStudent.Id}"
+                           HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="1"
+                           Text="FirstName:"
+                           Margin="0,0,3,0"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding SelectedStudent.FirstName}"
+                           HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="2"
+                           Text="LastName:"
+                           Margin="0,0,3,0"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="2"
+                           Text="{Binding SelectedStudent.LastName}"
+                           HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="3"
+                           Text="GroupId:"
+                           Margin="0,0,3,0"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="3"
+                           Text="{Binding SelectedStudent.GroupId}"
+                           HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="4"
+                           Text="Group:"
+                           Margin="0,0,3,0"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="4"
+                           Text="{Binding SelectedStudent.Group.Name}"
+                           HorizontalAlignment="Left"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>
