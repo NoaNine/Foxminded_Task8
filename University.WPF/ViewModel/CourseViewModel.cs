@@ -87,7 +87,7 @@ class CourseViewModel : BaseViewModel
         o is Course course
         && Courses.Count > 0
         && Courses.Contains(course)
-        && course.Groups.Count > 0; //TODO fix
+        && course.Groups.Count == 0;
 
     private void OnDeleteCourseCommandExecuted(object o)
     {

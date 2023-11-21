@@ -38,7 +38,7 @@ class GroupViewModel : BaseViewModel
         {
             group.Students = (ICollection<Student>)UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
             group.Course = UnitOfWork.GetRepository<Course>().GetByID(group.CourseId);
-            group.Tutor = UnitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO fix
+            group.Tutor = UnitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO need fix. Not downloaded from BD
         }
         OnPropertyChanged("Groups");
     }
@@ -84,7 +84,7 @@ class GroupViewModel : BaseViewModel
         o is Group group
         && Groups.Count > 0
         && Groups.Contains(group)
-        && group.Students.Count > 0; //TODO fix
+        && group.Students.Count == 0; 
 
     private void OnDeleteGroupCommandExecuted(object o)
     {
