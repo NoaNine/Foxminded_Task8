@@ -27,7 +27,7 @@ class StudentViewModel : BaseViewModel
     private ICommand _loadDataCommand;
     public ICommand LoadDataCommand =>
         _loadDataCommand ??= new RelayCommand(OnLoadDataCommandExecuted, CanLoadDataCommandExecute);
-    private bool CanLoadDataCommandExecute(object o) => true;
+    private bool CanLoadDataCommandExecute(object o) => Students == null;
 
     private void OnLoadDataCommandExecuted(object o)
     {
@@ -86,6 +86,6 @@ class StudentViewModel : BaseViewModel
 
     public StudentViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
     {
-        
+
     }
 }

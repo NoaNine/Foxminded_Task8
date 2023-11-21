@@ -3,11 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:University.WPF.View.Student"
+             xmlns:local="clr-namespace:University.WPF.View.Student" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=AddStudentVM}">
-    
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"
+                                   CommandParameter="{Binding Source={StaticResource Locator}, Path=StudentVM.Students}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <TextBlock Text="Add student"
@@ -22,9 +29,12 @@
                 <Style TargetType="Button"
                        BasedOn="{StaticResource AddAndEditButtonStyle}"/>
             </UniformGrid.Resources>
-            <Button Content="Ok"/>
-            <Button Content="Restore"/>
-            <Button Content="Cancel"/>
+            <Button Content="Ok"
+                    Command="{Binding AddStudentCommand}"/>
+            <Button Content="Restore"
+                    Command="{Binding RestoreStudentCommand}"/>
+            <Button Content="Cancel"
+                    Command="{Binding CencelStudentCommand}"/>
         </UniformGrid>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -46,25 +56,27 @@
                        Text="Id:"/>
             <TextBox Grid.Column="1"
                      Grid.Row="0"
-                     Text=""/>
+                     Text="{Binding InputStudent.Id}"/>
             <TextBlock Grid.Column="0"
                        Grid.Row="1"
                        Text="FirstName:"/>
             <TextBox Grid.Column="1"
                      Grid.Row="1"
-                     Text=""/>
+                     Text="{Binding InputStudent.FirstName}"/>
             <TextBlock Grid.Column="0"
                        Grid.Row="2"
                        Text="LastName:"/>
             <TextBox Grid.Column="1"
                      Grid.Row="2"
-                     Text=""/>
+                     Text="{Binding InputStudent.LastName}"/>
             <TextBlock Grid.Column="0"
                        Grid.Row="3"
                        Text="Group:"/>
             <ComboBox Grid.Column="1"
-                     Grid.Row="3"
-                     Text=""/>
+                      Grid.Row="3"
+                      ItemsSource="{Binding Groups}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding SelectedGroup}"/>
         </Grid>
     </DockPanel>
 </UserControl>
