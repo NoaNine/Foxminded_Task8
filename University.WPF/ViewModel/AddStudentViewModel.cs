@@ -5,6 +5,7 @@ using University.DAL.Models;
 using University.DAL.UnitOfWork;
 using University.WPF.Infrastructure.Command;
 using University.WPF.Infrastructure.Navigator;
+using University.WPF.Models;
 using University.WPF.ViewModel.Base;
 
 namespace University.WPF.ViewModel
@@ -12,10 +13,10 @@ namespace University.WPF.ViewModel
     internal class AddStudentViewModel : BaseViewModel
     {
         private ICommand _openStudentViewCommand;
-        private Group _selectedGroup;
-        private Student _inputStudent = new();
-        private ObservableCollection<Student> _students;
-        public Student InputStudent
+        private GroupModel _selectedGroup;
+        private StudentModel _inputStudent = new();
+        private ObservableCollection<StudentModel> _students;
+        public StudentModel InputStudent
         {
             get => _inputStudent;
             private set
@@ -24,7 +25,7 @@ namespace University.WPF.ViewModel
                 OnPropertyChanged("SelectedStudent");
             }
         }
-        public Group SelectedGroup
+        public GroupModel SelectedGroup
         {
             get => _selectedGroup;
             set
@@ -33,7 +34,7 @@ namespace University.WPF.ViewModel
                 OnPropertyChanged("SelectedGroup");
             }
         }
-        public ObservableCollection<Group> Groups { get; set; }
+        public ObservableCollection<GroupModel> Groups { get; set; }
         public ICommand OpenStudentViewCommand =>
             _openStudentViewCommand ??= new RelayCommand(o => Navigator.NavigateTo<StudentViewModel>(), o => true);
 
@@ -46,9 +47,9 @@ namespace University.WPF.ViewModel
 
         private void OnLoadDataCommandExecuted(object o)
         {
-            Groups = new ObservableCollection<Group>(UnitOfWork.GetRepository<Group>().GetAll());
+            Groups = Mapper.Map<ObservableCollection<GroupModel>>(UnitOfWork.GetRepository<Group>().GetAll());
             OnPropertyChanged("Groups");
-            _students = (ObservableCollection<Student>)o;
+            _students = (ObservableCollection<StudentModel>)o;
         }
 
         #endregion

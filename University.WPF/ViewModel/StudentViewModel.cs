@@ -6,13 +6,14 @@ using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
 using AutoMapper;
+using University.WPF.Models;
 
 namespace University.WPF.ViewModel;
 
 class StudentViewModel : BaseViewModel
 {
-    private Student _selectedStudent;
-    public Student SelectedStudent 
+    private StudentModel _selectedStudent;
+    public StudentModel SelectedStudent 
     { 
         get => _selectedStudent;
         set
@@ -21,7 +22,7 @@ class StudentViewModel : BaseViewModel
             OnPropertyChanged("SelectedStudent");
         }
     }
-    public ObservableCollection<Student> Students { get; set; }
+    public ObservableCollection<StudentModel> Students { get; set; }
 
     #region Command LoadDataCommand
 
@@ -32,11 +33,11 @@ class StudentViewModel : BaseViewModel
 
     private void OnLoadDataCommandExecuted(object o)
     {
-        Students = new ObservableCollection<Student>(UnitOfWork.GetRepository<Student>().GetAll());
+        Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll());
         foreach (var student in Students)
         {
-            student.Group = UnitOfWork.GetRepository<Group>().GetByID(student.GroupId);
-            student.Group.Course = UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId);
+            student.Group = Mapper.Map<GroupModel>(UnitOfWork.GetRepository<Group>().GetByID(student.GroupId));
+            student.Group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId));
         }
         OnPropertyChanged("Students");
     }
@@ -74,13 +75,13 @@ class StudentViewModel : BaseViewModel
         _deleteStudentCommand ??= new RelayCommand(OnDeleteStudentCommandExecuted, CanDeleteStudentCommandExecute);
 
     private bool CanDeleteStudentCommandExecute(object o) => 
-        o is Student student 
+        o is StudentModel student 
         && Students.Count > 0 
         && Students.Contains(student);
 
     private void OnDeleteStudentCommandExecuted(object o)
     {
-        Students.Remove((Student)o);
+        Students.Remove((StudentModel)o);
     }
 
     #endregion

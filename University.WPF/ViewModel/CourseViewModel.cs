@@ -7,13 +7,14 @@ using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
 using AutoMapper;
+using University.WPF.Models;
 
 namespace University.WPF.ViewModel;
 
 class CourseViewModel : BaseViewModel
 {
-    private Course _course;
-    public Course SelectedCourse
+    private CourseModel _course;
+    public CourseModel SelectedCourse
     {
         get => _course;
         set
@@ -22,7 +23,7 @@ class CourseViewModel : BaseViewModel
             OnPropertyChanged("SelectedCourse");
         }
     }
-    public ObservableCollection<Course> Courses { get; private set; }
+    public ObservableCollection<CourseModel> Courses { get; private set; }
 
     #region Command LoadDataCommand
 
@@ -34,16 +35,26 @@ class CourseViewModel : BaseViewModel
 
     private void OnLoadDataCommandExecuted(object o)
     {
-        Courses = new ObservableCollection<Course>(UnitOfWork.GetRepository<Course>().GetAll());
+        Courses = Mapper.Map<ObservableCollection<CourseModel>>(UnitOfWork.GetRepository<Course>().GetAll());
+        LoadDataCourse();
+        OnPropertyChanged("Courses");
+    }
+
+    private void LoadDataCourse()
+    {
         foreach (var course in Courses)
         {
-            course.Groups = (ICollection<Group>)UnitOfWork.GetRepository<Group>().GetAll(g => g.CourseId == course.Id);
-            foreach (var group in course.Groups)
-            {
-                group.Students = (ICollection<Student>)UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
-            }
+            course.Groups = Mapper.Map<ObservableCollection<GroupModel>>(UnitOfWork.GetRepository<Group>().GetAll(g => g.CourseId == course.Id));
+            LoadDataGroup(course);
         }
-        OnPropertyChanged("Courses");
+    }
+
+    private void LoadDataGroup(CourseModel course)
+    {
+        foreach (var group in course.Groups)
+        {
+            group.Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id));
+        }
     }
 
     #endregion
@@ -85,14 +96,14 @@ class CourseViewModel : BaseViewModel
         _deleteCourseCommand ??= new RelayCommand(OnDeleteCourseCommandExecuted, CanDeleteCourseCommandExecute);
 
     private bool CanDeleteCourseCommandExecute(object o) =>
-        o is Course course
+        o is CourseModel course
         && Courses.Count > 0
         && Courses.Contains(course)
         && course.Groups.Count == 0;
 
     private void OnDeleteCourseCommandExecuted(object o)
     {
-        Courses.Remove((Course)o);
+        Courses.Remove((CourseModel)o);
     }
 
     #endregion

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
@@ -7,13 +6,14 @@ using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
 using AutoMapper;
+using University.WPF.Models;
 
 namespace University.WPF.ViewModel;
 
 class GroupViewModel : BaseViewModel
 {
-    private Group _group;
-    public Group SelectedGroup
+    private GroupModel _group;
+    public GroupModel SelectedGroup
     {
         get => _group;
         set
@@ -22,7 +22,7 @@ class GroupViewModel : BaseViewModel
             OnPropertyChanged("SelectedGroup");
         }
     }
-    public ObservableCollection<Group> Groups { get; private set; }
+    public ObservableCollection<GroupModel> Groups { get; private set; }
 
     #region Command LoadDataCommand
 
@@ -34,12 +34,12 @@ class GroupViewModel : BaseViewModel
 
     private void OnLoadDataCommandExecuted(object o)
     {
-        Groups = new ObservableCollection<Group>(UnitOfWork.GetRepository<Group>().GetAll());
+        Groups = Mapper.Map<ObservableCollection<GroupModel>>(UnitOfWork.GetRepository<Group>().GetAll());
         foreach (var group in Groups)
         {
-            group.Students = (ICollection<Student>)UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id);
-            group.Course = UnitOfWork.GetRepository<Course>().GetByID(group.CourseId);
-            group.Tutor = UnitOfWork.GetRepository<Teacher>().GetByID(group.Id); //TODO need fix. Not downloaded from BD
+            group.Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id));
+            group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetByID(group.CourseId));
+            group.Tutor = Mapper.Map<TeacherModel>(UnitOfWork.GetRepository<Teacher>().GetByID(group.Id)); //TODO need fix. Not downloaded from BD
         }
         OnPropertyChanged("Groups");
     }
@@ -82,14 +82,14 @@ class GroupViewModel : BaseViewModel
     public ICommand DeleteGroupCommand =>
         _deleteGroupCommand ??= new RelayCommand(OnDeleteGroupCommandExecuted, CanDeleteGroupCommandExecute);
     private bool CanDeleteGroupCommandExecute(object o) =>
-        o is Group group
+        o is GroupModel group
         && Groups.Count > 0
         && Groups.Contains(group)
         && group.Students.Count == 0; 
 
     private void OnDeleteGroupCommandExecuted(object o)
     {
-        Groups.Remove((Group)o);
+        Groups.Remove((GroupModel)o);
     }
 
     #endregion
