@@ -3,6 +3,7 @@ using University.DAL.UnitOfWork;
 using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
+using AutoMapper;
 
 namespace University.WPF.ViewModel;
 
@@ -24,7 +25,7 @@ class SectionBarViewModel : BaseViewModel
     public ICommand OpenTeacherViewCommand =>
         _openTeacherViewCommand ??= new RelayCommand(o => Navigator.NavigateTo<TeacherViewModel>(), o => true);
 
-    public SectionBarViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+    public SectionBarViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper)
     {
         
     }

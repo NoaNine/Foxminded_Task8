@@ -6,6 +6,7 @@ using University.DAL.UnitOfWork;
 using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
+using AutoMapper;
 
 namespace University.WPF.ViewModel;
 
@@ -49,7 +50,7 @@ class HomeViewModel : BaseViewModel
 
     #endregion
 
-    public HomeViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork) //TODO set a default page
+    public HomeViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper) //TODO set a default page
     {
 
     }

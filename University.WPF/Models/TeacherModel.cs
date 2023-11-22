@@ -2,7 +2,7 @@
 
 namespace University.WPF.Models
 {
-    internal class TeacherModel : PersonBaseModel
+    internal class TeacherModel : PersonBaseModelData
     {
         private int? _groupId;
         private GroupModel? _group;

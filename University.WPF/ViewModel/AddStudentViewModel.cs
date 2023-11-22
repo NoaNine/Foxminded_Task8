@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using AutoMapper;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using University.DAL.Models;
 using University.DAL.UnitOfWork;
@@ -71,7 +72,7 @@ namespace University.WPF.ViewModel
 
         #endregion
 
-        public AddStudentViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+        public AddStudentViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper)
         {
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace University.WPF.Models.Base
 {
-    internal class PersonBaseModel : BaseModel
+    internal abstract class PersonBaseModelData : BaseModelData
     {
         private string _firstName;
         private string _lastName;

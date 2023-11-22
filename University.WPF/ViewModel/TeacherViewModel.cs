@@ -5,6 +5,7 @@ using University.DAL.UnitOfWork;
 using University.WPF.Infrastructure.Navigator;
 using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
+using AutoMapper;
 
 namespace University.WPF.ViewModel;
 
@@ -90,7 +91,7 @@ class TeacherViewModel : BaseViewModel
 
     #endregion
 
-    public TeacherViewModel(INavigator navigator, IUnitOfWork unitOfWork) : base(navigator, unitOfWork)
+    public TeacherViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper)
     {
 
     }

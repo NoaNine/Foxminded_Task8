@@ -3,7 +3,7 @@ using University.WPF.Models.Base;
 
 namespace University.WPF.Models
 {
-    internal class CourseModel : BaseModel
+    internal class CourseModel : BaseModelData
     {
         private string _name;
         private string _description;

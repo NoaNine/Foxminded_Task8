@@ -11,6 +11,7 @@ using University.WPF.ViewModel.Base;
 using University.WPF.View;
 using University.WPF.Infrastructure.Navigator;
 using University.WPF.ViewModel.Registrator;
+using University.WPF.Infrastructure.MapperConfiguration;
 
 namespace University.WPF;
 
@@ -42,6 +43,7 @@ public partial class App : Application
         services.AddSingleton<IUnitOfWork, UnitOfWork>();
         services.AddScoped<INavigator, Navigator>();
         services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
+        services.AddAutoMapper(typeof(GenericMapperProfile));
         services.AddAllViewModels();
         services.AddScoped<MainWindow>();
     }
