@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using University.DAL.Extensions;
 using University.DAL.Models;
 using System.Reflection;
 

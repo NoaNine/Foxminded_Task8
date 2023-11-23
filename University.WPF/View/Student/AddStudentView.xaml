@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:University.WPF.View.Student" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:University.WPF.View.Student" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=AddStudentVM}">
@@ -31,8 +32,8 @@
             </UniformGrid.Resources>
             <Button Content="Ok"
                     Command="{Binding AddStudentCommand}"/>
-            <Button Content="Restore"
-                    Command="{Binding RestoreStudentCommand}"/>
+            <Button Content="Reset"
+                    Command="{Binding ResetStudentCommand}"/>
             <Button Content="Cancel"
                     Command="{Binding CencelStudentCommand}"/>
         </UniformGrid>
