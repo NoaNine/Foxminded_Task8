@@ -14,7 +14,6 @@ using University.WPF.Infrastructure.MapperConfiguration;
 using University.WPF.ViewModel;
 using System.Collections.Generic;
 using University.DAL.Models;
-using System.Reflection.Emit;
 
 namespace University.WPF;
 
