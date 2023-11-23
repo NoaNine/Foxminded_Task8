@@ -6,7 +6,7 @@ namespace University.WPF.Models
     internal class GroupModel : BaseModelData
     {
         private string _name;
-        private int _courseId;
+        private int? _courseId;
         private CourseModel _course;
         private TeacherModel? _tutor;
         public string Name
@@ -18,7 +18,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public int CourseId
+        public int? CourseId
         {
             get => _courseId;
             set
@@ -36,7 +36,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public TeacherModel Tutor
+        public TeacherModel? Tutor
         {
             get => _tutor;
             set

@@ -15,7 +15,7 @@ namespace University.WPF.Models
                 OnPropertyChanged();
             }
         }
-        public GroupModel Group
+        public GroupModel? Group
         {
             get => _group;
             set
