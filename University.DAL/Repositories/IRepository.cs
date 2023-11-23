@@ -5,7 +5,7 @@ namespace University.DAL.Repositories;
 
 public interface IRepository<TEntity> where TEntity : BaseModel
 {
-    TEntity GetByID(object entity);
+    TEntity GetById(object entity);
     IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
     void Insert(TEntity entity);
     void Update(TEntity entity);

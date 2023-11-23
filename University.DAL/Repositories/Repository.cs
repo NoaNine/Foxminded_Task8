@@ -15,7 +15,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseMode
         _dbSet = _dbContext.Set<TEntity>() ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
-    public TEntity GetByID(object entity)
+    public TEntity GetById(object entity)
     {
         return _dbSet.Find(entity);
     }

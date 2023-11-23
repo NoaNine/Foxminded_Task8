@@ -7,6 +7,7 @@ using University.WPF.Infrastructure.Command;
 using University.WPF.ViewModel.Base;
 using AutoMapper;
 using University.WPF.Models;
+using System.Linq;
 
 namespace University.WPF.ViewModel;
 
@@ -38,8 +39,8 @@ class GroupViewModel : BaseViewModel
         foreach (var group in Groups)
         {
             group.Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id));
-            group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetByID(group.CourseId));
-            group.Tutor = Mapper.Map<TeacherModel>(UnitOfWork.GetRepository<Teacher>().GetByID(group.Id)); //TODO need fix. Not downloaded from BD
+            group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetById(group.CourseId));
+            group.Tutor = Mapper.Map<TeacherModel>(UnitOfWork.GetRepository<Teacher>().GetAll(t => t.GroupId == group.Id).FirstOrDefault());
         }
         OnPropertyChanged("Groups");
     }

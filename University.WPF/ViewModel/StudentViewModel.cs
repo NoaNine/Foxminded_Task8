@@ -36,8 +36,8 @@ class StudentViewModel : BaseViewModel
         Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll());
         foreach (var student in Students)
         {
-            student.Group = Mapper.Map<GroupModel>(UnitOfWork.GetRepository<Group>().GetByID(student.GroupId));
-            student.Group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetByID(student.Group.CourseId));
+            student.Group = Mapper.Map<GroupModel>(UnitOfWork.GetRepository<Group>().GetById(student.GroupId));
+            student.Group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetById(student.Group.CourseId));
         }
         OnPropertyChanged("Students");
     }

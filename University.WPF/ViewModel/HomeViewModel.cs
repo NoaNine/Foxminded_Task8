@@ -43,13 +43,13 @@ class HomeViewModel : BaseViewModel
         foreach (var group in course.Groups)
         {
             group.Students = Mapper.Map<ObservableCollection<StudentModel>>(UnitOfWork.GetRepository<Student>().GetAll(s => s.GroupId == group.Id));
-            group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetByID(group.CourseId));
+            group.Course = Mapper.Map<CourseModel>(UnitOfWork.GetRepository<Course>().GetById(group.CourseId));
         }
     }
 
     #endregion
 
-    public HomeViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper) //TODO set a default page
+    public HomeViewModel(INavigator navigator, IUnitOfWork unitOfWork, IMapper mapper) : base(navigator, unitOfWork, mapper) 
     {
 
     }
