@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="University.WPF.View.Course.CourseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:University.WPF.View.Course"
+             xmlns:m="clr-namespace:University.DAL.Models;assembly=University.DAL" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=CourseVM}">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="0" 
+                      ItemsSource="{Binding Courses}"
+                      SelectedItem="{Binding SelectedCourse}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" 
+                                        Width="auto" 
+                                        DisplayMemberBinding="{Binding Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Content="Create"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding OpenCreateCourseView}"/>
+                <Button Grid.Column="1"
+                        Content="Edit"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding OpenEditCourseView}"/>
+                <Button Grid.Column="2"
+                        Content="Delete"
+                        HorizontalAlignment="Stretch"
+                        Command="{Binding DeleteCourseCommand}"
+                        CommandParameter="{Binding SelectedCourse}"/>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical">
+            <TextBlock Text="Selected Course"/>
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding SelectedCourse.Name, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

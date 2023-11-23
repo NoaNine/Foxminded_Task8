@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:controls="clr-namespace:University.WPF.View.Controls" 
+                    xmlns:viewModel="clr-namespace:University.WPF.ViewModel" 
+                    xmlns:viewHome="clr-namespace:University.WPF.View.Home"
+                    xmlns:viewCourse="clr-namespace:University.WPF.View.Course"
+                    xmlns:viewGroup="clr-namespace:University.WPF.View.Group"
+                    xmlns:viewStudent="clr-namespace:University.WPF.View.Student"
+                    xmlns:viewTeacher="clr-namespace:University.WPF.View.Teacher">
+
+    <DataTemplate DataType="{x:Type TypeName=viewModel:SectionBarViewModel}">
+        <controls:SectionBar/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:HomeViewModel}">
+        <viewHome:HomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:CourseViewModel}">
+        <viewCourse:CourseView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:GroupViewModel}">
+        <viewGroup:GroupView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:StudentViewModel}">
+        <viewStudent:StudentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:AddStudentViewModel}">
+        <viewStudent:AddStudentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:EditStudentViewModel}">
+        <viewStudent:EditStudentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type TypeName=viewModel:TeacherViewModel}">
+        <viewTeacher:TeacherView/>
+    </DataTemplate>
+</ResourceDictionary>

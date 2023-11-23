@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="University.WPF.View.Controls.SectionBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:University.WPF.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=SectionBarVM}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="University"
+                   Background="{StaticResource TurquoiseBrush}"
+                   FontSize="30"
+                   Padding="7"/>
+        <Grid Grid.Row="1" 
+              Background="{StaticResource DarkTurquoiseBrush}">
+            <Grid.Resources>
+                <Style TargetType="RadioButton" 
+                       BasedOn="{StaticResource SectionRadioButtonStyle}"/>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0"
+                         Content="Home"
+                         Command="{Binding OpenHomeViewCommand}"/>
+            <RadioButton Grid.Column="1"
+                         Content="Course"
+                         Command="{Binding OpenCourseViewCommand}"/>
+            <RadioButton Grid.Column="2"
+                         Content="Group"
+                         Command="{Binding OpenGroupViewCommand}"/>
+            <RadioButton Grid.Column="3" 
+                         Content="Student"
+                         Command="{Binding OpenStudentViewCommand}"/>
+            <RadioButton Grid.Column="4" 
+                         Content="Teacher"
+                         Command="{Binding OpenTeacherViewCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>
