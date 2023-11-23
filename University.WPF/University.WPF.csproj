@@ -7,6 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Development</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Files\Images\arrowleft.png" />
     <None Remove="Files\Images\arrowright.png" />

@@ -20,7 +20,5 @@ public class UniversityContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-        modelBuilder.Seed(); //TODO this needs to entered in app and running if the configuration "Development"
     }
 }
