@@ -4,9 +4,9 @@ namespace University.WPF.Models
 {
     internal class StudentModel : PersonBaseModelData
     {
-        private int? _groupId;
+        private int _groupId;
         private GroupModel _group;
-        public int? GroupId 
+        public int GroupId 
         { 
             get => _groupId;
             set
