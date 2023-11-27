@@ -14,6 +14,7 @@ using University.WPF.Infrastructure.MapperConfiguration;
 using University.WPF.ViewModel;
 using System.Collections.Generic;
 using University.DAL.Models;
+using System.Linq;
 
 namespace University.WPF;
 
@@ -42,102 +43,13 @@ public partial class App : Application
         {
             var context = scope.ServiceProvider.GetService<UniversityContext>();
 
-            var courses = new List<Course>
+            if (!context.Groups.Any() && !context.Teachers.Any() && !context.Students.Any() && !context.Courses.Any())
             {
-                new Course { Name = "Прикладна математика", Description = "" },
-                new Course { Name = "Комп`ютерна інженерія", Description = "" },
-                new Course { Name = "Електроніка та електромеханіка", Description = "" },
-                new Course { Name = "Юридичне право", Description = "" }
-            };
-
-            var groups = new List<Group>
-            {
-                new Group { Name = "SR-11" },
-                new Group { Name = "SR-12" },
-                new Group { Name = "SR-13" },
-                new Group { Name = "PI-21" },
-                new Group { Name = "EE-31" },
-                new Group { Name = "YP-41" }
-            };
-
-            var students = new List<Student>
-            {
-                new Student { FirstName = "Ія", LastName = "Атрощенко" },
-                new Student { FirstName = "Гаїна", LastName = "Троцька" },
-                new Student { FirstName = "Устина", LastName = "Глущак" },
-                new Student { FirstName = "Шанетта", LastName = "Морачевська" },
-                new Student { FirstName = "Уляна", LastName = "Савула" },
-                new Student { FirstName = "Глафира", LastName = "Шамрай" },
-                new Student { FirstName = "Корнелія", LastName = "Магура" },
-                new Student { FirstName = "Фелікса", LastName = "Коник" },
-                new Student { FirstName = "Улита", LastName = "Фартушняк" },
-                new Student { FirstName = "Ада", LastName = "Варивода" },
-                new Student { FirstName = "Есфіра", LastName = "Мороз" },
-                new Student { FirstName = "Йоган", LastName = "Рижук" },
-                new Student { FirstName = "Вітан", LastName = "Боровий" },
-                new Student { FirstName = "Яртур", LastName = "Жук" },
-                new Student { FirstName = "Славобор", LastName = "Сливенко" },
-                new Student { FirstName = "Кий", LastName = "Бузинний" },
-                new Student { FirstName = "Дантур", LastName = "Горовенко" },
-                new Student { FirstName = "Ярчик", LastName = "Чічка" },
-                new Student { FirstName = "Матвій", LastName = "Білявський" },
-                new Student { FirstName = "Недан", LastName = "Баліцький" },
-                new Student { FirstName = "Щек", LastName = "Удовенко" },
-                new Student { FirstName = "Орест", LastName = "Колосовський" },
-                new Student { FirstName = "Йонас", LastName = "Вихрущ" },
-                new Student { FirstName = "Наслав", LastName = "Прокопчук" },
-                new Student { FirstName = "Куйбіда", LastName = "Лемешко" },
-                new Student { FirstName = "Ліпослав", LastName = "Мовчан" },
-                new Student { FirstName = "Снозір", LastName = "Назарук" },
-                new Student { FirstName = "Дорогосил", LastName = "Тарасович" },
-                new Student { FirstName = "Юхим", LastName = "Забродський" },
-                new Student { FirstName = "Яртур", LastName = "Цвєк" },
-                new Student { FirstName = "Лук`ян", LastName = "Григоренко" },
-                new Student { FirstName = "Хорив", LastName = "Горбачевський" },
-                new Student { FirstName = "Царко", LastName = "Киричук" },
-                new Student { FirstName = "Творимир", LastName = "Яхненко" },
-                new Student { FirstName = "Яснолик", LastName = "Рошко" },
-                new Student { FirstName = "Живорід", LastName = "Керножицький" },
-                new Student { FirstName = "Нестор", LastName = "Засядько" },
-                new Student { FirstName = "Йомер", LastName = "Павличенко" },
-                new Student { FirstName = "Малик", LastName = "Білоскурський" },
-                new Student { FirstName = "Осемрит", LastName = "Синиця" },
-                new Student { FirstName = "Явір", LastName = "Сливенко" },
-                new Student { FirstName = "Колодар", LastName = "Гайдабура" },
-                new Student { FirstName = "Макар", LastName = "Гембицький" },
-                new Student { FirstName = "Радогоста", LastName = "Гаркуша" },
-                new Student { FirstName = "Юдихва", LastName = "Степура" },
-                new Student { FirstName = "Млада", LastName = "Сенько" },
-                new Student { FirstName = "Римма", LastName = "Пашко" },
-                new Student { FirstName = "Цвітана", LastName = "Могиленко" },
-                new Student { FirstName = "Марта", LastName = "Кирей" },
-                new Student { FirstName = "Глафіра", LastName = "Любенецька" },
-                new Student { FirstName = "Віра", LastName = "Тарасовна" },
-                new Student { FirstName = "Жадана", LastName = "Заяць" },
-                new Student { FirstName = "Тава", LastName = "Андрусенко" },
-                new Student { FirstName = "Ядвіга", LastName = "Воронюк" },
-                new Student { FirstName = "Стелла", LastName = "Рибенчук" },
-                new Student { FirstName = "Мокрина", LastName = "Трегуб" }
-            };
-
-            var teachers = new List<Teacher>
-            {
-                new Teacher { FirstName = "Олександр", LastName = "Полухін" },
-                new Teacher { FirstName = "Василій", LastName = "Моржов" },
-                new Teacher { FirstName = "Іван", LastName = "Куклінський" },
-                new Teacher { FirstName = "Світлана", LastName = "Савченко" },
-                new Teacher { FirstName = "Раїса", LastName = "Халявкіна" },
-                new Teacher { FirstName = "Генадій", LastName = "Василенко" },
-                new Teacher { FirstName = "Петро", LastName = "Моденов" },
-                new Teacher { FirstName = "Ірина", LastName = "Чуба" },
-                new Teacher { FirstName = "Анна", LastName = "Колісник" }
-            };
-
-            context.AddRange(courses);
-            context.AddRange(groups);
-            context.AddRange(students);
-            context.AddRange(teachers);
-            context.SaveChanges();
+                DataSeeder.SeedCourses(context);
+                DataSeeder.SeedGroups(context);
+                DataSeeder.SeedStudents(context);
+                DataSeeder.SeedTeachers(context);
+            }
         }
 #endif
     }

@@ -11,6 +11,7 @@ public class CoursesConfiguration : IEntityTypeConfiguration<Course>
         builder.ToTable("Courses")
                 .HasMany(c => c.Groups)
                 .WithOne(g => g.Course)
+                .HasForeignKey(g => g.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(c => c.Name)
                 .IsUnique();
