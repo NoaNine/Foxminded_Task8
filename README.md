@@ -1,8 +1,11 @@
-#Task8
+# FoxmindEd_Task8
+The project was created by Oleksandr Havlytskyi for educational purposes at the FoxmindEd course.
+____
+**Technology or principles have been mastered( or repeated):** WPF, MVVM, MSSQL Serve, Entity Framework Core, app file architecture.
+____
+**The purpose of the project:** Learn to create a desktop application to store data in a database.
 
-Проект створено Гавлицьким Олександром в навчальних цілях на курсі FoxmindEd.
-
-Опис задачі:
+**Task description:**
 Create a WPF (WinForms) application for working with data from task 6 (and extend it for a new entity - Teacher).
 
 1. On the default page Ц show a list of courses. When the course is selected - show a list of groups for the selected course. 
