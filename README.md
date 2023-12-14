@@ -26,7 +26,6 @@ When the group is selected - show a list of students for the selected group. (Yo
 
 
 3. A separate page for editing students (add, update and delete), Change student data (name, surname)
-4. 
-5. Add a new entity Teacher (name, surname). Add the page for editing (add, update and delete). It is also necessary that each group of students could have a tutor. 
+4. Add a new entity Teacher (name, surname). Add the page for editing (add, update and delete). It is also necessary that each group of students could have a tutor. 
 
 
