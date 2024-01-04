@@ -1,7 +1,7 @@
 # FoxmindEd_Task8
 The project was created by Oleksandr Havlytskyi for educational purposes at the FoxmindEd course.
 ____
-**Technology or principles have been mastered( or repeated):** WPF, MVVM, MSSQL Serve, Entity Framework Core, app file architecture.
+**Technology or principles have been mastered( or repeated):** WPF, MVVM, MSSQL Serve, Entity Framework Core, Generic Repository, Unit Of Work, app file architecture.
 ____
 **The purpose of the project:** Learn to create a desktop application to store data in a database.
 
